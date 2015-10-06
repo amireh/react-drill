@@ -87,15 +87,15 @@ Browser build expects 3 things to be exposed on the global `window`:
 
 _TODO_
 
-#### `findComponentByType(t: React.Class, p: (HTMLElement) -> bool) -> React.Component`
+`findComponentByType(t: React.Class, p: (HTMLElement) -> bool) -> React.Component`
 
-#### `findByType(t: React.Class, p: (HTMLElement) -> bool) -> HTMLElement`
+`findByType(t: React.Class, p: (HTMLElement) -> bool) -> HTMLElement`
 
-#### `findBySelector(s: String, p: (HTMLElement) -> bool) -> HTMLElement`
+`findBySelector(s: String, p: (HTMLElement) -> bool) -> HTMLElement`
 
-#### `find(t: React.Class|String, p: (HTMLElement) -> bool) -> HTMLElement`
+`find(t: React.Class|String, p: (HTMLElement) -> bool) -> HTMLElement`
 
-#### `findAll(s: String) -> Array<HTMLElement>`
+`findAll(s: String) -> Array<HTMLElement>`
 
 ### DOM helpers
 
