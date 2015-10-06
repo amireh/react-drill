@@ -1,0 +1,43 @@
+{
+  "name": "react-drill",
+  "version": "1.0.0",
+  "description": "React DOM test utils.",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js -p",
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "./node_modules/karma/bin/karma start --single-run",
+    "prepublish": "npm run-script test && npm run-script build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/amireh/react-drill.git"
+  },
+  "keywords": [
+    "react",
+    "test",
+    "utils",
+    "dom"
+  ],
+  "author": "Ahmad Amireh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amireh/react-drill/issues"
+  },
+  "homepage": "https://github.com/amireh/react-drill#readme",
+  "dependencies": {
+    "jquery": "",
+    "react": ""
+  },
+  "devDependencies": {
+    "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
+    "eslint": "^1.6.0",
+    "eslint-plugin-react": "^3.5.1",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-webpack": "^1.7.0",
+    "mocha": "",
+    "webpack": "^1.12.2"
+  }
+}
