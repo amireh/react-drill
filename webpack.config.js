@@ -5,6 +5,8 @@ module.exports = {
   output: {
     path: __dirname + "/dist",
     filename: "react-drill.js",
+    libraryTarget: 'var',
+    library: 'ReactDrill',
   },
 
   externals: {
@@ -14,7 +16,6 @@ module.exports = {
   },
 
   module: {
-
     loaders: [
       {
         test: /\.test\.js$/,
