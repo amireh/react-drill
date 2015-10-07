@@ -1,3 +1,10 @@
+## 1.0.2
+
+- now exposing more DOMHelpers on the drilling API: `check`, `keyPress`, and `paste`
+- new drilling API `has(t: String|React.Class, cond: Function) -> bool`
+- fixed a bug that was preventing `find()` from properly matching a node in a selection
+- a new matcher `hasAttribute(name: String, value: String) -> bool`
+
 ## 1.0.1
 
 - added the `end()` method to the drilling API
