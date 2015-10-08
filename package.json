@@ -1,6 +1,6 @@
 {
   "name": "react-drill",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React DOM test utils.",
   "main": "index.js",
   "scripts": {
@@ -37,5 +37,8 @@
     "karma-webpack": "^1.7.0",
     "mocha": "",
     "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "assertion-error": "^1.0.1"
   }
 }

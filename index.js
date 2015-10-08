@@ -1,40 +1,22 @@
+var Scope = require('./lib/Scope');
 var DOMHelpers = require('./lib/DOMHelpers');
-var Drill = require('./lib/Drill');
-
-var HTMLElementMethods = [
-  'blur',
-  'change',
-  'click',
-  'check',
-  'fillIn',
-  'focus',
-  'keyDown',
-  'keyPress',
-  'keyUp',
-  'mouseDown',
-  'mouseEnter',
-  'mouseLeave',
-  'mouseTransition',
-  'mouseUp',
-  'paste',
-  'select',
-  'submit',
-  'typeIn',
-];
 
 // register all the DOMHelpers instance methods by default
-HTMLElementMethods.forEach(function(method) {
-  Drill.registerHTMLElementMethod(method, DOMHelpers[method]);
+Object.keys(DOMHelpers).forEach(function(method) {
+  Scope.registerHTMLElementMethod(method, DOMHelpers[method]);
 });
 
 function drill(component) {
-  return new Drill(component);
+  return new Scope(component);
 }
 
-module.exports = drill;
-module.exports.DOMHelpers = DOMHelpers;
+drill.DOMHelpers = DOMHelpers;
+drill.DOMSelectors = require('./lib/DOMSelectors');
 
-// these two shortcuts for convenience destructuring:
-// { drill, m } = require('react-drill');
-module.exports.drill = drill;
-module.exports.m = require('./lib/matchers');
+// these two shortcuts for destructuring convenience:
+//
+//     const { drill, m } = require('react-drill');
+drill.drill = drill;
+drill.m = require('./lib/matchers');
+
+module.exports = drill;

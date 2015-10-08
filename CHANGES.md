@@ -1,3 +1,10 @@
+## 1.0.3
+
+Internal changes:
+
+- broke off the DOM selector routines from `DOMHelpers` into a separate module, `DOMSelectors`
+- coverage for the selectors
+
 ## 1.0.2
 
 - now exposing more DOMHelpers on the drilling API: `check`, `keyPress`, and `paste`

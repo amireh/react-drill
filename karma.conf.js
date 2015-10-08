@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(config) {
   config.set({
     frameworks: [ 'mocha' ],
@@ -37,11 +39,11 @@ module.exports = function(config) {
     },
 
     files: [
-      'test.js',
+      'test/index.js',
     ],
 
     preprocessors: {
-      'test.js': [ 'webpack', 'sourcemap' ]
+      'test/index.js': [ 'webpack', 'sourcemap' ]
     },
 
     reporters: [ 'dots' ],
@@ -60,11 +62,21 @@ module.exports = function(config) {
     },
 
     webpack: {
+      devtool: 'eval',
+      resolve: {
+        alias: {
+          'test': path.resolve(__dirname, 'test')
+        },
+      },
+
       module: {
         loaders: [
           {
-            test: /\.test\.js$/,
-            include: [ __dirname + '/lib' ],
+            test: /\.test\.js$|test\/.*\.js$/,
+            include: [
+              path.resolve(__dirname, 'lib'),
+              path.resolve(__dirname, 'test')
+            ],
             loader: 'babel-loader',
           }
         ]
