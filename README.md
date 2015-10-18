@@ -1,6 +1,6 @@
 # react-drill
 
-TL;DR - Handle DOM trees like the master you are. "Drill" down to the elements you need to reach and interact with them in a fun, expressive API.
+TL;DR - "Drill" down through a DOM tree to the element(s) you need to reach and interact with them in an expressive, integration-style API.
 
 ---
 
@@ -8,34 +8,26 @@ The longer version:
 
 `react-drill` provides a bunch of helpers for testing React components in an integration-style manner. The beautiful part is avoiding the reliance on using ugly, meaningless, and brittle CSS classes for locating things in the DOM tree, and instead, using the actual component types to drive our tests.
 
-Code examples speak more than a thousand words:
+Let's look at a few code examples to see how this works out in action.
 
 ## Example
 
-This simple example shows how to reach a `<button />` rendered inside a component we're testing, and clicking it:
+Let's assume we have a custom `<Button />` component:
 
 ```javascript
-const drill = require('react-drill');
-const MyComponent = require('MyComponent');
-const instance = React.render(<MyComponent />, document.body);
-
-drill(instance)
-  .find('button')
-    .click()
-;
-```
-
-But that's not what is really cool about `react-drill`, this is:
-
-```javascript
-const { drill, m } = require('react-drill');
+// @file components/Button.js
 const Button = React.createClass({
   render() {
     return <button {...this.props} />
   }
 });
+```
 
-const RootComponent = React.createClass({
+And a `<Root />` component which renders a bunch of `<Button />` ones.
+
+```javascript
+// @file components/Root.js
+const Root = React.createClass({
   render() {
     return (
       <div>
@@ -50,8 +42,14 @@ const RootComponent = React.createClass({
     );
   }
 });
+```
 
-const component = React.render(<RootComponent />, document.body);
+Now we want to test that pushing each button rendered by `<Root />` yields the proper results. This is what our test would look like:
+
+```javascript
+// @file components/Root.test.js
+const { drill, m } = require('react-drill');
+const component = React.render(<Root />, document.body);
 
 drill(component)
   .find(Button, m.hasText('Quack'))
@@ -60,8 +58,10 @@ drill(component)
 // => quack
 
 drill(component)
-  .find(Button, m.hasText('Purrr')) // => Error! No such Button component :)
+  .find(Button, m.hasText('Purrr'))
+  // => AssertionError: No such Button component
     .click()
+    // ^ this will never go through
 ;
 ```
 
@@ -79,31 +79,13 @@ Browser build expects 3 things to be exposed on the global `window`:
 
 - [window.React](https://facebook.github.io/react/downloads.html)
 - [window.React.addons.TestUtils](https://facebook.github.io/react/docs/test-utils.html)
-- [window.jQuery](https://jquery.com/download/)
+- [window.jQuery](https://jquery.com/download/) _(this dependency may be dropped in the future)_
 
-## API
+## Where to go from here
 
-### Drilling
-
-_TODO_
-
-`findComponentByType(t: React.Class, p: (HTMLElement) -> bool) -> React.Component`
-
-`findByType(t: React.Class, p: (HTMLElement) -> bool) -> HTMLElement`
-
-`findBySelector(s: String, p: (HTMLElement) -> bool) -> HTMLElement`
-
-`find(t: React.Class|String, p: (HTMLElement) -> bool) -> HTMLElement`
-
-`findAll(s: String) -> Array<HTMLElement>`
-
-### DOM helpers
-
-_TODO_
-
-### Matchers
-
-_TODO_
+See [index.js]() for the drilling API. Alternatively, you can use the
+helpers directly without drilling in [lib/DOMSelectors/index.js]() and
+[lib/DOMHelpers.js]().
 
 ## License
 
