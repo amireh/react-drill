@@ -1,3 +1,8 @@
+## 1.0.4
+
+- fixed an issue that was preventing `#find()` and other DOMSelectors from finding objects inside an `iframe.contentWindow`
+- main export `drill` will now forward the second argument to `Scope`; the nodes
+
 ## 1.0.3
 
 Internal changes:

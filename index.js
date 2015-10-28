@@ -26,8 +26,8 @@ Object.keys(DOMHelpers).forEach(function(method) {
  *         .click()
  *     ;
  */
-function drill(component) {
-  return new Scope(component);
+function drill(component, nodes) {
+  return new Scope(component, nodes);
 }
 
 /**
