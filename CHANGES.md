@@ -1,3 +1,8 @@
+## 2.0.0
+
+- Now works with React 0.14
+- added a `dispatchNativeEvent` DOM helper
+
 ## 1.0.4
 
 - fixed an issue that was preventing `#find()` and other DOMSelectors from finding objects inside an `iframe.contentWindow`

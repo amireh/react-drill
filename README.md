@@ -1,5 +1,10 @@
 # react-drill
 
+> **NOTE**
+>
+> If you're using React 0.13 or older versions, you need to use the 1.x
+> versions of this library. Versions 2+ will only support React 0.14+.
+
 TL;DR - "Drill" down through a DOM tree to the element(s) you need to reach and interact with them in an expressive, integration-style API.
 
 ---
@@ -8,7 +13,9 @@ The longer version:
 
 `react-drill` provides a bunch of helpers for testing React components in an integration-style manner. The beautiful part is avoiding the reliance on using ugly, meaningless, and brittle CSS classes for locating things in the DOM tree, and instead, using the actual component types to drive our tests.
 
-Let's look at a few code examples to see how this works out in action.
+## API docs
+
+JavaScript API docs can be found at http://amireh.github.io/react-drill/.
 
 ## Example
 
@@ -34,7 +41,7 @@ const Root = React.createClass({
         <Button onClick={() => console.log('Quack')}>
           Quack
         </Button>
-        
+
         <Button onClick={() => console.log('Pur')}>
           Pur
         </Button>
