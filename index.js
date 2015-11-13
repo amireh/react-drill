@@ -19,7 +19,7 @@ Object.keys(DOMHelpers).forEach(function(method) {
  *
  *     var drill = require('react-drill');
  *     var MyComponent = require('./MyComponent');
- *     var component = React.render(MyComponent, document.createElement('div'));
+ *     var component = ReactDOM.render(MyComponent, document.createElement('div'));
  *
  *     drill(component)
  *       .find('button')

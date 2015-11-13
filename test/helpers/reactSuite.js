@@ -1,5 +1,7 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const DOMSelectors = require('../../lib/DOMSelectors');
+const _ = require('lodash');
 
 function reactSuite(mochaSuite, Type, initialProps) {
   let API = {};
@@ -13,7 +15,7 @@ function reactSuite(mochaSuite, Type, initialProps) {
 
   Object.defineProperty(API, 'node', {
     get() {
-      return React.findDOMNode(component);
+      return ReactDOM.findDOMNode(component);
     }
   });
 
@@ -25,19 +27,21 @@ function reactSuite(mochaSuite, Type, initialProps) {
 
   mochaSuite.beforeEach(function() {
     container = document.createElement('div');
-    component = React.render(<Type {...initialProps || {}} />, container);
-
     DOMSelectors.setRootNode(container);
   });
 
   mochaSuite.afterEach(function() {
-    React.unmountComponentAtNode(container);
+    ReactDOM.unmountComponentAtNode(container);
     container.remove();
-
     component = undefined;
     container = undefined;
     DOMSelectors.setRootNode(undefined);
   });
+
+  API.render = function (props) {
+    props = _.merge({}, initialProps, props || {})
+    component = ReactDOM.render(<Type {...props} />, container);
+  }
 
   return API;
 }

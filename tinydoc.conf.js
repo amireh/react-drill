@@ -1,4 +1,3 @@
-var path = require('path');
 var config = {
   title: 'react-drill',
   outputDir: 'doc/compiled',
