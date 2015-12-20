@@ -1,6 +1,6 @@
 {
   "name": "react-drill",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "React DOM test utils.",
   "main": "index.js",
   "scripts": {
@@ -36,8 +36,14 @@
     "karma-sourcemap-loader": "^0.3.6",
     "karma-webpack": "^1.7.0",
     "mocha": "",
-    "tinydoc": "3.2.2",
-    "webpack": "^1.12.2"
+    "tinydoc": "^4.0.0",
+    "tinydoc-plugin-js": "^4.0.0",
+    "tinydoc-theme-gitbooks": "^1.0.0",
+    "webpack": "^1.12.2",
+    "blessed": "x",
+    "react-blessed": "0.x"
+  },
+  "optionalDependencies": {
   },
   "dependencies": {
     "assertion-error": "^1.0.1",

@@ -1,16 +1,18 @@
 var config = {
   title: 'react-drill',
   outputDir: 'doc/compiled',
-  readme: 'README.md',
+  // readme: 'README.md',
   publicPath: '',
   disqus: false,
   layout: 'single-page',
   allowUserSettings: false,
   stylesheet: 'doc/style.less',
+  // scrollSpying: true,
 };
 
 config.plugins = [
-  require('tinydoc/plugins/cjs')({
+  require('tinydoc-theme-gitbooks')({}),
+  require('tinydoc-plugin-js')({
     navigationLabel: 'API',
 
     source: [

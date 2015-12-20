@@ -1,3 +1,10 @@
+## 2.1.0
+
+- Added a react-blessed addon
+- Scope can now be inherited and it will respect the custom constructor when 
+  chaining
+- It is now possible to inject a custom `findDOMNode` and `scryRenderedComponentsWithType` routines other than ReactDOM for non-DOM React environments.
+
 ## 2.0.0
 
 - Now works with React 0.14
