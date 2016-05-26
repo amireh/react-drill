@@ -1,3 +1,7 @@
+## 2.1.2
+
+- Fixed an issue where an undefined selector passed to `DOMSelectors.find` would throw an exception
+
 ## 2.1.0
 
 - Added a react-blessed addon

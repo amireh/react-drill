@@ -1,6 +1,6 @@
 {
   "name": "react-drill",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "React DOM test utils.",
   "main": "index.js",
   "scripts": {
