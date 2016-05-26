@@ -1,3 +1,7 @@
+## 2.1.3
+
+- Track `react` and `react-dom` as peer dependencies instead of dependencies.
+
 ## 2.1.2
 
 - Fixed an issue where an undefined selector passed to `DOMSelectors.find` would throw an exception
