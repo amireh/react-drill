@@ -1,3 +1,7 @@
+## 2.1.4
+
+- Add support for options hash to keyUp, keyPress, and keyDown DOMHelpers
+
 ## 2.1.3
 
 - Track `react` and `react-dom` as peer dependencies instead of dependencies.
