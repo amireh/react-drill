@@ -1,7 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const DOMSelectors = require('../../lib/DOMSelectors');
-const _ = require('lodash');
 
 function reactSuite(mochaSuite, Type, initialProps) {
   let API = {};
@@ -39,7 +38,7 @@ function reactSuite(mochaSuite, Type, initialProps) {
   });
 
   API.render = function (props) {
-    props = _.merge({}, initialProps, props || {})
+    props = Object.assign({}, initialProps, props || {})
     component = ReactDOM.render(<Type {...props} />, container);
   }
 

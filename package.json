@@ -52,7 +52,6 @@
   "dependencies": {
     "assertion-error": "^1.0.1",
     "fbjs": "0.4.0",
-    "jquery": "",
-    "lodash": "^3.10.1"
+    "jquery": ""
   }
 }
