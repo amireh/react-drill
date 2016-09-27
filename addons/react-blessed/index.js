@@ -1,4 +1,3 @@
-var ReactBlessed = require('react-blessed');
 var ReactBlessedIDOperations = require('react-blessed/dist/ReactBlessedIDOperations');
 var DOM = require('../../lib/DOM');
 var Scope = require('../../lib/Scope');
