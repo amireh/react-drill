@@ -1,12 +1,18 @@
-.single-page-layout {
-  &__content {
-    width: 720px;
-  }
-}
+@import (reference) "~variables";
+@import (reference) "~helpers";
 
-// .root__footer {
-//   text-align: left;
-//   margin-left: 4em;
-//   width: 640px;
-//   // padding-left: 4em;
-// }
+.schemable({
+  // Prism.js
+
+  .token.atrule, .token.attr-value, .token.keyword {
+    color: @plain-link;
+  }
+
+  code[class*="language-"], pre[class*="language-"] {
+    text-shadow: none;
+  }
+
+  .token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+    color: @solarized-yellow;
+  }
+});
