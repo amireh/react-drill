@@ -1,6 +1,6 @@
 var config = {
   title: 'react-drill',
-  outputDir: 'doc/compiled',
+  outputDir: 'docs',
   publicPath: '',
   disqus: false,
   allowUserSettings: false,
