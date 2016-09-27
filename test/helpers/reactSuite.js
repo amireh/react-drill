@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const DOMSelectors = require('../../lib/DOMSelectors');
+const assign = require('object-assign');
 
 function reactSuite(mochaSuite, Type, initialProps) {
   let API = {};
@@ -38,7 +39,7 @@ function reactSuite(mochaSuite, Type, initialProps) {
   });
 
   API.render = function (props) {
-    props = Object.assign({}, initialProps, props || {})
+    props = assign({}, initialProps, props || {})
     component = ReactDOM.render(<Type {...props} />, container);
   }
 
