@@ -41,10 +41,11 @@
     "tinydoc-theme-gitbooks": "^1.0.0",
     "webpack": "^1.12.2",
     "blessed": "x",
-    "react-blessed": "0.x"
+    "react-blessed": "0.x",
+    "react-dom": "15.3.2",
+    "react": "15.3.2"
   },
-  "optionalDependencies": {
-  },
+  "optionalDependencies": {},
   "peerDependencies": {
     "react": ">=0.14.1",
     "react-dom": ">=0.14.1"
