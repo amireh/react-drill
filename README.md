@@ -15,7 +15,7 @@ The longer version:
 
 ## API docs
 
-JavaScript API docs can be found at http://amireh.github.io/react-drill/.
+JavaScript API docs can be found at http://amireh.github.io/react-drill/index.html.
 
 ## Example
 
