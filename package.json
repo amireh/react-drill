@@ -1,6 +1,6 @@
 {
   "name": "react-drill",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "React DOM test utils.",
   "main": "index.js",
   "scripts": {
@@ -43,19 +43,21 @@
     "megadoc-theme-qt": "5.0.0",
     "mocha": "",
     "object-assign": "4.1.0",
-    "react": "15.3.2",
+    "react": "15.4.1",
+    "react-addons-test-utils": "15.4.1",
     "react-blessed": "0.x",
-    "react-dom": "15.3.2",
+    "react-dom": "15.4.1",
     "webpack": "^1.12.2"
   },
   "optionalDependencies": {},
   "peerDependencies": {
-    "react": ">=0.14.1",
-    "react-dom": ">=0.14.1"
+    "react": ">=0.14.1 < 16",
+    "react-dom": ">=0.14.1 < 16"
   },
   "dependencies": {
     "assertion-error": "^1.0.1",
-    "fbjs": "0.4.0",
-    "jquery": ""
+    "invariant": "^2.2.2",
+    "jquery": "^3.1.1",
+    "react-addons-test-utils": "^15.4.1"
   }
 }

@@ -1,3 +1,8 @@
+## 2.2.0
+
+- Now works with React 15.4.1
+- Added explicit dependency on the `react-addons-test-utils` package since it's no longer provided by `react`
+
 ## 2.1.4
 
 - Add support for options hash to keyUp, keyPress, and keyDown DOMHelpers
