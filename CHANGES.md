@@ -1,3 +1,7 @@
+## 2.2.1
+
+- Fixed `#find` with HTMLElement or SVGElement in IE11
+
 ## 2.2.0
 
 - Now works with React 15.4.1
