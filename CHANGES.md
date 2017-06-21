@@ -1,3 +1,7 @@
+## 2.3.0
+- Now works with React 15.5.4
+- Removed explicit dependency on the `react-addons-test-utils` package since it's now in 'react-dom'
+
 ## 2.2.1
 
 - Fixed `#find` with HTMLElement or SVGElement in IE11

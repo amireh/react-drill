@@ -85,7 +85,6 @@ npm install react-drill
 Browser build expects 3 things to be exposed on the global `window`:
 
 - [window.React](https://facebook.github.io/react/downloads.html)
-- [window.React.addons.TestUtils](https://facebook.github.io/react/docs/test-utils.html)
 - [window.jQuery](https://jquery.com/download/) _(this dependency may be dropped in the future)_
 
 ## Where to go from here
