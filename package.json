@@ -43,10 +43,9 @@
     "megadoc-theme-qt": "5.0.0",
     "mocha": "",
     "object-assign": "4.1.0",
-    "react": "15.4.1",
-    "react-addons-test-utils": "15.4.1",
+    "react": "15.5.4",
     "react-blessed": "0.x",
-    "react-dom": "15.4.1",
+    "react-dom": "15.5.4",
     "webpack": "^1.12.2"
   },
   "optionalDependencies": {},
@@ -57,7 +56,6 @@
   "dependencies": {
     "assertion-error": "^1.0.1",
     "invariant": "^2.2.2",
-    "jquery": "^3.1.1",
-    "react-addons-test-utils": "^15.4.1"
+    "jquery": "^3.1.1"
   }
 }
