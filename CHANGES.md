@@ -1,4 +1,10 @@
+## 2.4.0
+
+- Added new Scope API [[Scope#reload]] for re-binding the DOM node
+- Added a new matcher: [[Matchers.hasProperty]]
+
 ## 2.3.0
+
 - Now works with React 15.5.4
 - Removed explicit dependency on the `react-addons-test-utils` package since it's now in 'react-dom'
 
