@@ -1,0 +1,18 @@
+@import (reference) "~variables";
+@import (reference) "~helpers";
+
+.schemable({
+  // Prism.js
+
+  .token.atrule, .token.attr-value, .token.keyword {
+    color: @plain-link;
+  }
+
+  code[class*="language-"], pre[class*="language-"] {
+    text-shadow: none;
+  }
+
+  .token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+    color: @solarized-yellow;
+  }
+});
