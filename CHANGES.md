@@ -1,3 +1,11 @@
+## 2.5.0
+
+- matchers are now passed the index and the props of components
+- new matcher [[Matchers.at]] for selecting a target (component or DOM node)
+  via index
+- new matcher [[Matchers.hasProp]] for querying a component prop
+- new matcher [[Matchers.hasProps]] for querying multiple component props
+
 ## 2.4.0
 
 - Added new Scope API [[Scope#reload]] for re-binding the DOM node
