@@ -166,7 +166,10 @@ var config = {
           regions: [
             {
               name: 'Core::Content',
-              options: { framed: true },
+              options: {
+                framed: true,
+                className: 'api-docs'
+              },
               outlets: [
                 {
                   name: 'JS::Module'
@@ -182,7 +185,10 @@ var config = {
           regions: [
             {
               name: 'Core::Content',
-              options: { framed: true },
+              options: {
+                framed: true,
+                className: 'api-docs'
+              },
               outlets: [
                 {
                   name: 'JS::Module'

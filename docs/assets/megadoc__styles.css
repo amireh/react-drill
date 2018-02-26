@@ -3429,7 +3429,20 @@ a[target="_blank"]:after {
   font-size: 0.5rem;
 }
 body.body--themed {
-  font-family: monospace;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 17px;
+}
+body.body--themed .doc-content {
+  --x-height-multiplier: 0.375;
+  --baseline-multiplier: 0.17;
+}
+body.body--themed h1,
+body.body--themed h2,
+body.body--themed h3,
+body.body--themed h4,
+body.body--themed h5,
+body.body--themed h6 {
+  font-family: sans-serif;
 }
 body.body--themed .token.atrule,
 body.body--themed .token.attr-value,
@@ -3439,6 +3452,8 @@ body.body--themed .token.keyword {
 body.body--themed code[class*="language-"],
 body.body--themed pre[class*="language-"] {
   text-shadow: none;
+  font-family: monospace;
+  overflow: visible;
 }
 body.body--themed .property-tag__description,
 body.body--themed .property-tag__default-value,
@@ -3469,9 +3484,12 @@ body.body--themed .class-view__type-def-list .doc-entity__header,
 body.body--themed .class-view__type-def-list .doc-entity__description {
   margin-left: 0;
 }
+body.body--themed .doc-entity__header {
+  font-family: monospace;
+}
 body.body--themed .doc-entity__method-params,
 body.body--themed .doc-entity__function-signature {
-  font-family: inherit;
+  font-family: monospace;
 }
 body.body--themed .doc-group__header {
   border-bottom-style: dashed;
@@ -3480,9 +3498,16 @@ body.body--themed .doc-group__header {
 }
 body.body--themed a.anchorable-heading__link {
   width: 3rem;
-  margin-left: -3.25rem;
+  margin-left: -3.5rem;
   position: absolute;
   text-align: right;
   padding-right: 0;
-  line-height: 1;
+  opacity: 0;
+}
+body.body--themed .api-docs .anchorable-heading__link {
+  opacity: 0.5;
+}
+body.body--themed .api-docs .anchorable-heading:hover .anchorable-heading__link,
+body.body--themed .api-docs .anchorable-heading__link:hover {
+  opacity: inherit;
 }

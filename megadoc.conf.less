@@ -10,9 +10,19 @@ a[target="_blank"]:after {
 }
 
 .schemable({
-  // font-family: "Helvetica Neue", Helvetica, serif;
-  font-family: monospace;
-  // Prism.js
+  @code-typeface: monospace;
+
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 17px;
+
+  .doc-content {
+    --x-height-multiplier: 0.375;
+    --baseline-multiplier: 0.17;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: sans-serif;
+  }
 
   .token.atrule, .token.attr-value, .token.keyword {
     color: @plain-link;
@@ -20,12 +30,9 @@ a[target="_blank"]:after {
 
   code[class*="language-"], pre[class*="language-"] {
     text-shadow: none;
-    // font-family: monospace;
+    font-family: @code-typeface;
+    overflow: visible;
   }
-
-  // .token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
-  //   color: @solarized-yellow;
-  // }
 
   .property-tag__description,
   .property-tag__default-value,
@@ -63,9 +70,13 @@ a[target="_blank"]:after {
     margin-left: 0;
   }
 
+  .doc-entity__header {
+    font-family: @code-typeface;
+  }
+
   .doc-entity__method-params,
   .doc-entity__function-signature {
-    font-family: inherit;
+    font-family: @code-typeface;
   }
 
   .doc-group__header {
@@ -76,10 +87,21 @@ a[target="_blank"]:after {
 
   a.anchorable-heading__link {
     width: 3rem;
-    margin-left: -3.25rem;
+    margin-left: -3.5rem;
     position: absolute;
     text-align: right;
     padding-right: 0;
-    line-height: 1;
+    opacity: 0;
+  }
+
+  .api-docs {
+    .anchorable-heading__link {
+      opacity: 0.5;
+    }
+
+    .anchorable-heading:hover .anchorable-heading__link,
+    .anchorable-heading__link:hover {
+      opacity: inherit;
+    }
   }
 });

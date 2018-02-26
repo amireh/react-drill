@@ -7,20 +7,29 @@
 - The drilling scope can now select multiple components in addition to multiple
   DOM nodes.
 - Added an official API to support [[warping | Scope#warp]]
+- [[Scope]] is now an export of the package. It is no longer necessary to
+  require it manually from `react-drill/lib/Scope.js`.
+- Extensions to the scope's prototype (e.g. for warp routines) can now be made
+  in a civil manner using the [[drill.registerExtension]] interface.
+- Custom matchers can now be registered globally (on the `m` exported symbol)
+  using the [[drill.registerMatcher]] interface.
+- Custom actions can now be registered globally (on the Scope prototype) using
+  the [[drill.registerAction]] interface.
 
 **Breaking changes**
 
-- The following functions were **dropped** from the [[Scope]] API:
+The following functions were **dropped** from the [[Scope]] object because they
+were confusing and didn't add any value by themselves:
 
   * `Scope#findAllByType`
   * `Scope#findBySelector`
   * `Scope#findByType`
   * `Scope#findComponentByType`
 
-  In their place, one can now use [[Scope#find]] for locating single elements
-  and [[Scope#findAll]] for locating multiple elements. Both APIs accept either
-  a DOM query or a React class as a selector and the return type is adjusted
-  accordingly.
+In their place, one can now use [[Scope#find]] for locating a single element
+and [[Scope#findAll]] for locating multiple ones. Both APIs accept either a DOM
+query or a React class as a selector and the return type has been adjusted
+accordingly.
 
 **Potentially breaking changes (actions)**
 
@@ -32,24 +41,22 @@ user.
   has been introduced that dispatches a native browser event to use if needed:
   [[Actions.clickNative]].
 
-- [[Actions.check]] no longer accepts an "isChecked" boolean option. If you
+- [[Actions.check]] no longer accepts an `isChecked` boolean option. If you
   want to uncheck a checkbox, use the new action [[Actions.uncheck]] instead.
 
 - [[Actions.select]] no longer directly sets the `value` property of the
   `<select />` node.
 
-- [[Actions.typeIn]] no longer accepts the "dontReplace" boolean option and no
+- [[Actions.typeIn]] no longer accepts the `dontReplace` boolean option and no
   longer truncates the target's "value" property by default. If you are relying
-  on this functionality, consider calling `.fillIn('')` on the scope before the
-  call to `.typeIn`.
+  on this functionality, consider calling `.fillIn('')` on the scope first.
 
 - [[Actions.paste]] no longer manually fills in the target's "value" property
   with the text. Instead, it creates a proper
   [ClipboardEvent](https://developer.mozilla.org/en-
   US/docs/Web/API/ClipboardEvent) with the textual content specified in the
   `clipboardEvent` properties data field (type `text`.) If you are relying on
-  the previous behavior, consider calling `.fillIn(text)` on the scope before
-  the call to `.paste`.
+  the previous behavior, consider calling `.fillIn(text)` on the scope first.
 
 - [[Actions.typeIn]] no longer implicitly focuses the target nor does it fill
   in the target's "value" property with the text. Instead, it triggers events
@@ -69,8 +76,9 @@ user.
 
 **Deprecations**
 
-The following symbols exported from the main package were renamed and they will
-be removed in a future release:
+The following symbols that were exported from the main package have been
+renamed. The previous symbols are still around but will trigger a deprecation
+notice and will be removed in a future release:
 
 - `Scope.registerHTMLElementMethod` -> [[drill.registerAction]]
 - `DOMHelpers` -> [[Actions]]

@@ -55,21 +55,20 @@ The scope APIs are chainable in that most of them return another scope back for
 you, unless they're [[actions | README.md#actions]] then they'd return the same
 scope back.
 
-    drill(component)    // => Scope.<component.type, nodes: [findDOMNode(component)]>
-      .find(Menu)       // => Scope.<Menu, nodes: [findDOMNode(Menu)]>
-        .find('button') // => Scope.<Menu, nodes: [HTMLElement.<button>]>
-          .click()      // => Scope.<Menu, nodes: [HTMLElement.<button>]>
-          .blur()       // => Scope.<Menu, nodes: [HTMLElement.<button>]>
+    drill(component)    // => Scope.<component, [findDOMNode(component)]>
+      .find(Menu)       // => Scope.<Menu, [findDOMNode(Menu)]>
+        .find('button') // => Scope.<Menu, [HTMLElement.<button>]>
+          .click()      // => Scope.<Menu, [HTMLElement.<button>]>
+          .blur()       // => Scope.<Menu, [HTMLElement.<button>]>
 
-**Next**: we can create scopes, which is cool, but how do we refine them to
-represent other components and DOM nodes?
+**Next**: we can create scopes but how do we refine them to represent other
+components and DOM nodes down the tree?
 
 ### Selectors
 
 A selector is a function that locates React components _or_ DOM nodes inside
-the current scope matching criteria you specify. The most common selector is
-[[Scope#find]] but there are [[other | Selectors]] APIs available for more
-eccentric use-cases.
+the current scope matching criteria you specify. The most common selectors are
+[[Scope#find]] and [[Scope#findAll]].
 
     drill(component)
       .find(Menu)        // find is a selector
@@ -81,7 +80,7 @@ particular ones. Can we refine our selection further?
 ### Matchers
 
 A [[matcher | Matcher]] is a predicate function that allows you to refine your
-selection to locate a most particular element for your scope. All [[selectors |
+selection to locate a most particular element in your scope. All [[selectors |
 ./README.md#selectors]] accept a matcher.
 
     drill(component)
