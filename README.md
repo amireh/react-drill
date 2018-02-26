@@ -113,6 +113,12 @@ See [[drill]] for creating a scope and then the [[Scope]] itself for more
 possibilities. Or if you'd prefer to see examples first, browse from the
 sidebar to the left.
 
+## Troubleshooting
+
+### Drill isn't working with stateless components!
+
+A work-around is described [[here | examples/stateless-components.md]].
+
 ## License
 
 MIT
