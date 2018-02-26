@@ -1,78 +1,102 @@
 # react-drill
 
-> **NOTE**
->
-> If you're using React 0.13 or older versions, you need to use the 1.x
-> versions of this library. Versions 2+ will only support React 0.14+.
+React Drill is a React testing library that facilitates interacting with a DOM
+tree through an expressive API similar to [Capybara's](https://github.com/teamc
+apybara/capybara/blob/2.17_stable/README.md#the-dsl). The library provides a
+number of abstractions for locating particular UI elements using either React
+component classes or DOM selectors and for interacting with them.
 
-TL;DR - "Drill" down through a DOM tree to the element(s) you need to reach and interact with them in an expressive, integration-style API.
+The name "drill" comes from the fact that the API allows you to "drill down" through a React virtual DOM tree to interact with elements in it.
 
----
+## Motivation
 
-The longer version:
+- The means to easily express the _intent_ of an interaction instead of
+  fiddling around with implementation details like how to trigger the `select`
+  event on a combo box, or how to simulate typing into a text widget. Drill
+  does this by providing a set of uniform APIs that can abstract this away.
 
-`react-drill` provides a bunch of helpers for testing React components in an integration-style manner. The beautiful part is avoiding the reliance on using ugly, meaningless, and brittle CSS classes for locating things in the DOM tree, and instead, using the actual component types to drive our tests.
+      drill(component)
+        .find(TextField)
+          .typeIn('hello world')
 
-## API docs
+- The possibility of not relying on CSS classes or DOM selectors to find
+  elements to interact with. Instead, one can use the source React component
+  class as a selector.
+
+      drill(component)
+        .find(Button, m.hasText('Save'))
+          .click()
+
+## Usage
 
 JavaScript API docs can be found at http://amireh.github.io/react-drill/index.html.
 
-## Example
+## Concepts
 
-Let's assume we have a custom `<Button />` component:
+### Scope
 
-```javascript
-// @file components/Button.js
-const Button = React.createClass({
-  render() {
-    return <button {...this.props} />
-  }
-});
-```
+A [[scope | Scope]] is an object that represents the current React component
+and a set of DOM nodes that you're able to interact with. When you [[drill]]
+into a tree, you get a scope back.
 
-And a `<Root />` component which renders a bunch of `<Button />` ones.
+The scope APIs are chainable in that most of them return another scope back for
+you, unless they're [[actions | README.md#actions]] then they'd return the same
+scope back.
 
-```javascript
-// @file components/Root.js
-const Root = React.createClass({
-  render() {
-    return (
-      <div>
-        <Button onClick={() => console.log('Quack')}>
-          Quack
-        </Button>
+    drill(component)    // => Scope.<component.type, nodes: [findDOMNode(component)]>
+      .find(Menu)       // => Scope.<Menu, nodes: [findDOMNode(Menu)]>
+        .find('button') // => Scope.<Menu, nodes: [HTMLElement.<button>]>
+          .click()      // => Scope.<Menu, nodes: [HTMLElement.<button>]>
+          .blur()       // => Scope.<Menu, nodes: [HTMLElement.<button>]>
 
-        <Button onClick={() => console.log('Pur')}>
-          Pur
-        </Button>
-      </div>
-    );
-  }
-});
-```
+**Next**: we can create scopes, which is cool, but how do we refine them to
+represent other components and DOM nodes?
 
-Now we want to test that pushing each button rendered by `<Root />` yields the proper results. This is what our test would look like:
+### Selectors
 
-```javascript
-// @file components/Root.test.js
-const { drill, m } = require('react-drill');
-const component = React.render(<Root />, document.body);
+A selector is a function that locates React components _or_ DOM nodes inside
+the current scope matching criteria you specify. The most common selector is
+[[Scope#find]] but there are [[other | DOMSelectors]] APIs available for more
+eccentric use-cases.
 
-drill(component)
-  .find(Button, m.hasText('Quack'))
-    .click()
-;
-// => quack
+    drill(component)
+      .find(Menu)        // find is a selector
+        .findAll(Button) // findAll is also a selector
 
-drill(component)
-  .find(Button, m.hasText('Purrr'))
-  // => AssertionError: No such Button component
-    .click()
-    // ^ this will never go through
-;
-```
+**Next:** we're now able to create scopes and select elements, but not
+particular ones. Can we refine our selection?
 
-Notice how we no longer needed to rely on CSS classes, or DOM selectors, to locate elements. Instead, we utilize the _existing_ component types that we write anyway.
+### Matchers
+
+A [[matcher | Matcher]] is a predicate function that allows you to further
+refine your selection to locate a most particular element for your scope. All
+[[selectors | ./README.md#selectors]] accept a matcher.
+
+    drill(component)
+      .find(Button, m.hasText('Save')) // hasText is a matcher
+
+A list of [[common matchers | Matchers]] is available for your convenience and
+you can build your own too.
+
+**Next:** with the ability to locate particular elements using selectors and
+matchers, we now need a way to interact with them.
+
+### Actions
+
+An action is a function that takes a scope and interacts with its DOM node(s)
+or its component, such as clicking, blurring, or typing.
+
+The [[pre-made actions | DOMHelpers]] are available directly on the stock
+[[Scope]] object.
+
+    drill(component)
+      .click() // click is an action
+
+You can define your own actions too and expose them on the scope using
+[[Scope.registerHTMLElementMethod]].
+
+## Examples
+
 
 ## Installation
 

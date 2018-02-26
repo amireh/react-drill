@@ -7,24 +7,22 @@ Object.keys(DOMHelpers).forEach(function(method) {
 });
 
 /**
- * Drill into a component and start kicking. This is the main export of the
- * library.
+ * Drill into a rendered component and start kicking. This is the main export of
+ * the library.
  *
  * @param  {React.Component} component
- *         A rendered component to drill into.
- *
  * @return {Scope}
  *
  * @example
  *
- *     var drill = require('react-drill');
- *     var MyComponent = require('./MyComponent');
- *     var component = ReactDOM.render(MyComponent, document.createElement('div'));
+ *     import { drill } from 'react-drill'
+ *     import Menu from './Menu'
+ *
+ *     const component = ReactDOM.render(Menu, document.createElement('div'))
  *
  *     drill(component)
- *       .find('button')
+ *       .find('button', m.hasText('Logout'))
  *         .click()
- *     ;
  */
 function drill(component, nodes) {
   return new Scope(component, nodes);
@@ -69,5 +67,6 @@ drill.drill = drill;
  *     console.log(typeof m.hasText); // => "function"
  */
 drill.m = require('./lib/matchers');
+drill.Scope = Scope;
 
 module.exports = drill;
