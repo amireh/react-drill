@@ -1,9 +1,16 @@
 var path = require('path');
 
 module.exports = function(config) {
-  config.set({
+  config.set(addCoverage({
     frameworks: [ 'mocha' ],
     browsers: [ 'chrome_without_security' ],
+    plugins: [
+      'karma-mocha',
+      'karma-sourcemap-loader',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-webpack',
+    ],
 
     customLaunchers: {
       // if you want to use this (for CI or to debug a ScriptError), run karma
@@ -61,8 +68,10 @@ module.exports = function(config) {
       }
     },
 
-    webpack: {
+    webpack: Object.assign({}, require('./webpack.config.js'), {
       devtool: 'eval',
+      mode: 'development',
+      entry: undefined,
       resolve: {
         alias: {
           'test': path.resolve(__dirname, 'test')
@@ -70,7 +79,17 @@ module.exports = function(config) {
       },
 
       module: {
-        loaders: [
+        rules: [
+          {
+            test: /\.js$/,
+            include: [
+              path.resolve(__dirname, 'lib')
+            ],
+            loader: 'babel-loader',
+            options: {
+              plugins: ['babel-plugin-istanbul']
+            }
+          },
           {
             test: /\.test\.js$|test\/.*\.js$/,
             include: [
@@ -78,12 +97,36 @@ module.exports = function(config) {
               path.resolve(__dirname, 'test')
             ],
             loader: 'babel-loader',
+            options: {
+              presets: ['babel-preset-react']
+            }
           }
         ]
       }
-    },
+    }),
     webpackMiddleware: {
       noInfo: true
     }
-  });
+  }));
 };
+
+function addCoverage(config) {
+  return Object.assign({}, config, {
+    plugins: (config.plugins || []).concat([
+      'karma-coverage',
+    ]),
+
+    reporters: (config.reporters || []).concat([
+      'coverage',
+    ]),
+
+    coverageReporter: {
+      dir: path.resolve(__dirname, 'coverage'),
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ],
+    }
+  })
+}

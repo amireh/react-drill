@@ -2,3 +2,4 @@
 /dist
 /doc/compiled
 /package-lock.json
+/coverage

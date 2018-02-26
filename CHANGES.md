@@ -2,25 +2,75 @@
 
 ## 3.0.0
 
-Improvements:
+**Improvements**
 
 - The drilling scope can now select multiple components in addition to multiple
   DOM nodes.
 - Added an official API to support [[warping | Scope#warp]]
 
-The following functions were **dropped** from the [[Scope]] API:
+**Breaking changes**
 
-- `Scope#findAllByType`
-- `Scope#findBySelector`
-- `Scope#findByType`
-- `Scope#findComponentByType`
+- The following functions were **dropped** from the [[Scope]] API:
 
-In their place, one can now use [[Scope#find]] for locating single elements and
-[[Scope#findAll]] for locating multiple elements. Both APIs accept either a DOM
-query or a React class as a selector and the return type is adjusted
-accordingly.
+  * `Scope#findAllByType`
+  * `Scope#findBySelector`
+  * `Scope#findByType`
+  * `Scope#findComponentByType`
 
-The following symbols exported from the main package were renamed:
+  In their place, one can now use [[Scope#find]] for locating single elements
+  and [[Scope#findAll]] for locating multiple elements. Both APIs accept either
+  a DOM query or a React class as a selector and the return type is adjusted
+  accordingly.
+
+**Potentially breaking changes (actions)**
+
+The following changes are made with the intent of getting closer to simulating
+exactly how React would trigger interactions when used in the browser by a real
+user.
+
+- [[Actions.click]] no longer accepts a `simulateNative` option. A new action
+  has been introduced that dispatches a native browser event to use if needed:
+  [[Actions.clickNative]].
+
+- [[Actions.check]] no longer accepts an "isChecked" boolean option. If you
+  want to uncheck a checkbox, use the new action [[Actions.uncheck]] instead.
+
+- [[Actions.select]] no longer directly sets the `value` property of the
+  `<select />` node.
+
+- [[Actions.typeIn]] no longer accepts the "dontReplace" boolean option and no
+  longer truncates the target's "value" property by default. If you are relying
+  on this functionality, consider calling `.fillIn('')` on the scope before the
+  call to `.typeIn`.
+
+- [[Actions.paste]] no longer manually fills in the target's "value" property
+  with the text. Instead, it creates a proper
+  [ClipboardEvent](https://developer.mozilla.org/en-
+  US/docs/Web/API/ClipboardEvent) with the textual content specified in the
+  `clipboardEvent` properties data field (type `text`.) If you are relying on
+  the previous behavior, consider calling `.fillIn(text)` on the scope before
+  the call to `.paste`.
+
+- [[Actions.typeIn]] no longer implicitly focuses the target nor does it fill
+  in the target's "value" property with the text. Instead, it triggers events
+  for each character as React would in the browser if the user were to type.
+  The sequence of events is:
+
+  * `keyDown`
+  * `keyPress`
+  * `beforeInput`
+  * `input`
+  * `change`
+  * `keyUp`
+
+- [[Actions.keyPress]], [[Actions.keyDown]], and [[Actions.keyUp]] no longer
+  focus the target implicitly. If you are relying on this functionality,
+  consider calling `.focus()` on the scope before the call to any of them.
+
+**Deprecations**
+
+The following symbols exported from the main package were renamed and they will
+be removed in a future release:
 
 - `Scope.registerHTMLElementMethod` -> [[drill.registerAction]]
 - `DOMHelpers` -> [[Actions]]

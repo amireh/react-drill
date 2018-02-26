@@ -1,5 +1,10 @@
+var path = require('path')
+
 module.exports = {
-  entry: './index.js',
+  entry: {
+    application: path.resolve(__dirname, 'lib/index.js')
+  },
+  context: path.resolve(__dirname, 'lib'),
 
   output: {
     path: __dirname + "/dist",
@@ -8,18 +13,23 @@ module.exports = {
     library: 'ReactDrill',
   },
 
-  externals: {
-    'react': 'React',
-    'react/lib/ReactTestUtils': 'ReactTestUtils',
-    'jquery': 'jQuery',
-  },
+  // externals: {
+  //   'react': 'React',
+  //   'react/lib/ReactTestUtils': 'ReactTestUtils',
+  //   'jquery': 'jQuery',
+  // },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.test\.js$/,
         include: [ __dirname + '/lib' ],
         loader: 'babel-loader',
+        options: {
+          plugins: ['babel-plugin-istanbul', {
+            cwd: path.resolve(__dirname, 'lib'),
+          }]
+        }
       }
     ]
   },
