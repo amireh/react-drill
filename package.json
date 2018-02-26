@@ -2,7 +2,7 @@
   "name": "react-drill",
   "version": "2.5.0",
   "description": "React DOM test utils.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js -p",
     "lint": "./node_modules/.bin/eslint .",

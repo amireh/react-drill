@@ -1,3 +1,5 @@
+# Release notes
+
 ## 2.5.0
 
 - matchers are now passed the index and the props of components

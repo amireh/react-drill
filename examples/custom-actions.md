@@ -1,6 +1,6 @@
 # Custom actions
 
-An [[action | DOMHelpers]] has a flexible signature:
+An [[action | Actions]] has a flexible signature:
 
     function(selector: String, [...params]): void
 
@@ -9,7 +9,7 @@ which indicates the element it should operate on. Any additional parameters
 needed to perform the action can be specified afterwards. The return value is
 insignificant.
 
-You can utilize the selector [[DOMSelectors.find]] to convert the first
+You can utilize the selector [[Selectors.find]] to convert the first
 argument to a DOM node, and optimally ask the selector to assert the node
 is valid.
 
@@ -32,8 +32,8 @@ function click(selector, options = { simulateNative = false }) {
 ```
 
 Once you have your action defined, you may expose it on the Scope API using
-[[Scope.registerAction]].
+[[Scope.exposeAction]].
 
 ```javascript
-Scope.registerAction(click)
+Scope.exposeAction(click)
 ```

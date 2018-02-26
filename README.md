@@ -56,7 +56,7 @@ represent other components and DOM nodes?
 
 A selector is a function that locates React components _or_ DOM nodes inside
 the current scope matching criteria you specify. The most common selector is
-[[Scope#find]] but there are [[other | DOMSelectors]] APIs available for more
+[[Scope#find]] but there are [[other | Selectors]] APIs available for more
 eccentric use-cases.
 
     drill(component)
@@ -86,14 +86,14 @@ matchers, we now need a way to interact with them.
 An action is a function that takes a scope and interacts with its DOM node(s)
 or its component, such as clicking, blurring, or typing.
 
-The [[pre-made actions | DOMHelpers]] are available directly on the stock
+The [[pre-made actions | Actions]] are available directly on the stock
 [[Scope]] object.
 
     drill(component)
       .click() // click is an action
 
 You can define your own actions too and expose them on the scope using
-[[Scope.registerHTMLElementMethod]].
+[[Scope.exposeAction]].
 
 ## Examples
 
@@ -113,9 +113,8 @@ Browser build expects 3 things to be exposed on the global `window`:
 
 ## Where to go from here
 
-See [index.js]() for the drilling API. Alternatively, you can use the
-helpers directly without drilling in [lib/DOMSelectors/index.js]() and
-[lib/DOMHelpers.js]().
+See [[drill]] for the drilling API. Alternatively, you can use the helpers
+directly without drilling in [[Selectors]] and [[Actions]].
 
 ## License
 
