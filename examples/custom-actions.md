@@ -5,7 +5,7 @@ An [[action | Actions]] has a flexible signature:
     function(selector: String, [...params]): void
 
 Primarily, it receives a DOM selector (or a DOM node, when it's invoked through
-[[the scope api | Scope.exposeAction]]) as the first argument which indicates
+[[the scope api | drill.registerAction]]) as the first argument which indicates
 the element it should operate on. Any additional parameters needed to perform
 the action can be specified afterwards. The return value is insignificant.
 
@@ -16,7 +16,7 @@ is valid.
 A sample implementation to perform a `click` on an element would be:
 
 ```javascript
-import { Scope, Selectors } from 'react-drill'
+import { drill, Selectors } from 'react-drill'
 import { Simulate } from 'react-dom/test-utils'
 
 function click(selector, options = { simulateNative = false }) {
@@ -32,8 +32,8 @@ function click(selector, options = { simulateNative = false }) {
 ```
 
 Once you have your action defined, you may expose it on the Scope API using
-[[Scope.exposeAction]].
+[[drill.registerAction]]:
 
 ```javascript
-Scope.exposeAction(click)
+drill.registerAction(click)
 ```

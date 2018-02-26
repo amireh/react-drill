@@ -2,7 +2,25 @@
 
 ## 3.0.0
 
-Symbol renames:
+Improvements:
+
+- The drilling scope can now select multiple components in addition to multiple
+  DOM nodes.
+- Added an official API to support [[warping | Scope#warp]]
+
+The following functions were **dropped** from the [[Scope]] API:
+
+- `Scope#findAllByType`
+- `Scope#findBySelector`
+- `Scope#findByType`
+- `Scope#findComponentByType`
+
+In their place, one can now use [[Scope#find]] for locating single elements and
+[[Scope#findAll]] for locating multiple elements. Both APIs accept either a DOM
+query or a React class as a selector and the return type is adjusted
+accordingly.
+
+The following symbols exported from the main package were renamed:
 
 - `Scope.registerHTMLElementMethod` -> [[drill.registerAction]]
 - `DOMHelpers` -> [[Actions]]

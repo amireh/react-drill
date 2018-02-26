@@ -113,11 +113,15 @@ See [[drill]] for creating a scope and then the [[Scope]] itself for more
 possibilities. Or if you'd prefer to see examples first, browse from the
 sidebar to the left.
 
-## Troubleshooting
+## FAQ
 
 ### Drill isn't working with stateless components!
 
-A work-around is described [[here | examples/stateless-components.md]].
+It cannot since they have no instance to represent them and the [[scope]] needs
+one otherwise it cannot tell what's a component and what's a (virtual) DOM
+node.
+
+You can not use this library if you're using stateless components exclusively.
 
 ## License
 

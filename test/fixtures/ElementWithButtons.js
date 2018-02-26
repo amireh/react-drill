@@ -6,8 +6,8 @@ const ElementWithButtons = React.createClass({
     return (
       <div className="root-element">
         <div className="some-child">
-          <Button type="submit" />
-          <Button type="cancel" />
+          <Button type="submit" onClick={this.props.onSubmit} />
+          <Button type="cancel" onClick={this.props.onCancel} />
         </div>
       </div>
     );
