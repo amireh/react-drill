@@ -8,15 +8,17 @@ straight-forward.
 ---
 
 The `Scope.registerHTMLElementMethod` has been renamed to
-[[Scope.exposeAction]].
+[[drill.registerAction]].
 
 If you were registering custom actions using that hook, you should rename it.
 
     // version 2:
+    import Scope from 'react-drill/lib/Scope'
     Scope.registerHTMLElementMethod(function customClick() { ... })
 
     // version 3:
-    Scope.exposeAction(function customClick() { ... })
+    import drill from 'react-drill'
+    drill.registerAction(function customClick() { ... })
 
 ---
 

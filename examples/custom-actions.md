@@ -4,10 +4,10 @@ An [[action | Actions]] has a flexible signature:
 
     function(selector: String, [...params]): void
 
-Primarily, it receives a DOM selector (or a DOM node) as the first argument
-which indicates the element it should operate on. Any additional parameters
-needed to perform the action can be specified afterwards. The return value is
-insignificant.
+Primarily, it receives a DOM selector (or a DOM node, when it's invoked through
+[[the scope api | Scope.exposeAction]]) as the first argument which indicates
+the element it should operate on. Any additional parameters needed to perform
+the action can be specified afterwards. The return value is insignificant.
 
 You can utilize the selector [[Selectors.find]] to convert the first
 argument to a DOM node, and optimally ask the selector to assert the node

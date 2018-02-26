@@ -1,12 +1,22 @@
 # Release notes
 
+## 3.0.0
+
+Symbol renames:
+
+- `Scope.registerHTMLElementMethod` -> [[drill.registerAction]]
+- `DOMHelpers` -> [[Actions]]
+- `DOMSelectors` -> [[Selectors]]
+
+Please consult the [[upgrade guide | ./UPGRADE.md#version-2-to-3]] for
+guidance.
+
 ## 2.5.0
 
 - matchers are now passed the index and the props of components
 - new matcher [[Matchers.at]] for selecting a target (component or DOM node)
   via index
 - new matcher [[Matchers.hasProp]] for querying a component prop
-- new matcher [[Matchers.hasProps]] for querying multiple component props
 
 ## 2.4.0
 

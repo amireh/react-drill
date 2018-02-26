@@ -1,4 +1,4 @@
-# Starter
+# Getting started
 
 Let's assume we have a custom `<Button />` component:
 
@@ -11,7 +11,7 @@ class Button extends React.Component {
 }
 ```
 
-And a `<Root />` component which renders a bunch of `<Button />` ones.
+And a `<Root />` component which renders a few `<Button />`s:
 
 ```javascript
 // @file components/Root.js
@@ -36,7 +36,7 @@ Now we want to test that pushing each button rendered by `<Root />` yields the
 proper results. The assertions themselves are omitted since they're out of the
 scope of react-drill.
 
-Anyway, this is what our test would look like:
+This is what our test would look like:
 
 ```javascript
 // @file components/Root.test.js

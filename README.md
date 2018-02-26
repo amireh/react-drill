@@ -1,4 +1,4 @@
-# react-drill
+# React Drill
 
 React Drill is a React testing library that facilitates interacting with a DOM
 tree through an expressive API similar to [Capybara's](https://github.com/teamc
@@ -12,8 +12,10 @@ The name "drill" comes from the fact that the API allows you to "drill down" thr
 
 - The means to easily express the _intent_ of an interaction instead of
   fiddling around with implementation details like how to trigger the `select`
-  event on a combo box, or how to simulate typing into a text widget. Drill
-  does this by providing a set of uniform APIs that can abstract this away.
+  event on a combo box, or how to simulate typing into a text widget.
+
+  Drill does this by providing a set of uniform APIs that can abstract this
+  away:
 
       drill(component)
         .find(TextField)
@@ -21,7 +23,7 @@ The name "drill" comes from the fact that the API allows you to "drill down" thr
 
 - The possibility of not relying on CSS classes or DOM selectors to find
   elements to interact with. Instead, one can use the source React component
-  class as a selector.
+  class as a selector:
 
       drill(component)
         .find(Button, m.hasText('Save'))
@@ -29,9 +31,19 @@ The name "drill" comes from the fact that the API allows you to "drill down" thr
 
 ## Usage
 
-JavaScript API docs can be found at http://amireh.github.io/react-drill/index.html.
+To install the package you can get it from npm:
+
+```shell
+npm install --save-dev react-drill
+```
+
+It is recommended to go quickly over the [[concepts | README.md#concepts]]
+before jumping into the API.
 
 ## Concepts
+
+Drill's API is driven by four concepts: the scope object, selectors, matchers,
+and actions. This section will walk you through them.
 
 ### Scope
 
@@ -64,19 +76,19 @@ eccentric use-cases.
         .findAll(Button) // findAll is also a selector
 
 **Next:** we're now able to create scopes and select elements, but not
-particular ones. Can we refine our selection?
+particular ones. Can we refine our selection further?
 
 ### Matchers
 
-A [[matcher | Matcher]] is a predicate function that allows you to further
-refine your selection to locate a most particular element for your scope. All
-[[selectors | ./README.md#selectors]] accept a matcher.
+A [[matcher | Matcher]] is a predicate function that allows you to refine your
+selection to locate a most particular element for your scope. All [[selectors |
+./README.md#selectors]] accept a matcher.
 
     drill(component)
       .find(Button, m.hasText('Save')) // hasText is a matcher
 
 A list of [[common matchers | Matchers]] is available for your convenience and
-you can build your own too.
+you can [[build your own | examples/custom-matchers.md]] too.
 
 **Next:** with the ability to locate particular elements using selectors and
 matchers, we now need a way to interact with them.
@@ -84,7 +96,7 @@ matchers, we now need a way to interact with them.
 ### Actions
 
 An action is a function that takes a scope and interacts with its DOM node(s)
-or its component, such as clicking, blurring, or typing.
+or its component, such as by clicking, blurring, or typing in.
 
 The [[pre-made actions | Actions]] are available directly on the stock
 [[Scope]] object.
@@ -92,29 +104,14 @@ The [[pre-made actions | Actions]] are available directly on the stock
     drill(component)
       .click() // click is an action
 
-You can define your own actions too and expose them on the scope using
-[[Scope.exposeAction]].
-
-## Examples
-
-
-## Installation
-
-The thing works in any node.js environment or in the browser.
-
-```bash
-npm install react-drill
-```
-
-Browser build expects 3 things to be exposed on the global `window`:
-
-- [window.React](https://facebook.github.io/react/downloads.html)
-- [window.jQuery](https://jquery.com/download/) _(this dependency may be dropped in the future)_
+Just like with matchers, you can [[define your own actions | examples/custom-
+actions.md]] too.
 
 ## Where to go from here
 
-See [[drill]] for the drilling API. Alternatively, you can use the helpers
-directly without drilling in [[Selectors]] and [[Actions]].
+See [[drill]] for creating a scope and then the [[Scope]] itself for more
+possibilities. Or if you'd prefer to see examples first, browse from the
+sidebar to the left.
 
 ## License
 

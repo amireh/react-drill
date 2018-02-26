@@ -1,11 +1,15 @@
-# react-drill <-> react-blessed addon
+# React Blessed drill addon
 
-This add-on currently provides a rather minimal support for drilling into [blessed](https://github.com/chjj/blessed) nodes rendered using [react-blessed](https://github.com/Yomguithereal/react-blessed).
+This add-on currently provides rather minimal support for drilling into
+[blessed](https://github.com/chjj/blessed) nodes rendered using [react-
+blessed](https://github.com/Yomguithereal/react-blessed).
 
-So far, we can assert on textual content of the nodes and reference them by their underlying blessed type. For example, to assert that the screen has rendered a `<log />` element containing a "Hello World!" message:
+So far, it is possible to assert on textual content of the nodes and reference
+them by their underlying blessed type. For example, to assert that the screen
+has rendered a `<log />` element containing a "Hello World!" message:
 
 ```javascript
-const { drill, m } = require('react-drill/addons/react-blessed');
+import { drill, m } from 'react-drill/addons/react-blessed'
 
 it('renders log messages', function() {
   const screen = blessed.screen();
@@ -14,6 +18,12 @@ it('renders log messages', function() {
   drill(component).find('log', m.hasText('Hello World!'));
 });
 ```
+
+You can also utilize the drill for locating the blessed node then perform your
+assertions on their properties. For example, to verify that a `progressbar`
+widget has been filled to 25%:
+
+    assert.equal(drill(component).find('progressbar').node.filled, 25)
 
 ## Usage
 
@@ -24,37 +34,64 @@ You can look at [goro](https://github.com/instructure/goro/blob/master/lib/__tes
 
 ## Matchers
 
-These matches can be used with `find` and friends just like the regular drill matchers. They are available on the `m` property of the main export:
+These matches can be used with `find` and friends just like the [[regular drill
+matchers | Matchers]]. They are exported as the `m` symbol:
 
-    const { m } = require('react-drill/addons/react-blessed');
+    import { m } from 'react-drill/addons/react-blessed'
 
-### `hasText(text: string) -> (blessed.Node -> bool)`
+### .hasText
+
+    function hasText(text: String): (blessed.Node): Boolean
 
 Creates a matcher that will scrape the content of some blessed node and all 
 descendant nodes then matches the given string against them.
 
 This also catches the `label` attribute so you can assert that a certain box with the "Failures" label is rendered as such:
 
-    drill(component).find('box', m.hasText('Failures'))
+    drill(component)
+      .find('box', m.hasText('Failures'))
 
-## Queries
+## Internal helpers
 
-Some helpers for querying things against blessed nodes. These are available on the `q` property of the main export, i.e.:
+These functions are built for internal use but may be useful. They are
+available on the `q` property of the main export:
 
-    const { q } = require('react-drill/addons/react-blessed');
+    import { q } from 'react-drill/addons/react-blessed'
 
-### `getTextContent(n: blessed.Node) -> string`
+### `.getTextContent`
 
-Returns the textual content of a node and all its descendants. This is used by 
-the `hasText` matcher internally.
+    function getTextContent(blessed.Node): String
 
-### `findChildren(n: blessed.Node) -> Array.<blessed.Node>`
+Returns the textual content of a node **and all its descendants**. This is used
+by the `hasText` matcher internally.
+
+    getTextContent(
+      drill(component)
+        .find(log)
+          .node
+    ) // => "blah"
+
+### `.findChildren`
+
+    function findChildren(
+      rootNode: blessed.Node,
+      predicate: (blessed.Node): Boolean
+    ): Array.<blessed.Node>
 
 Returns all the rendered children and descendants of a given blessed node.
 
+    findChildren(
+      drill(component)
+        .find(box, m.hasText('Controls'))
+          .node
+    ) // => [ <log />, <progressbar /> ]
+
 ## Gotchas
 
-- _some_ blessed type factories actually return a different type altogether. I hit this with `blessed.List()` which returns an instance of the type `blessed.ScrollableBox`. So when you're drilling, you need to actually look for `scrollablebox` and not `list`. It's kinda lame, and *can* be worked around by monkey patching ReactBlessed internals but I didn't bother.
+_Some_ blessed type factories actually return a different type altogether. I
+hit this with `blessed.List()` which returns an instance of the type
+`blessed.ScrollableBox`. So when you're drilling, you need to actually look for
+`scrollablebox` and not `list`.
 
 ## TODO
 

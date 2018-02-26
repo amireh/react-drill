@@ -7,6 +7,54 @@ var configureJS = config => Object.assign({}, {
   hideBlankReturns: true,
   hidePrivateSymbols: true,
   expandReturnedFunctionSignatures: true,
+  inferModuleIdFromFileName: true,
+  useDirAsNamespace: true,
+  linkToNamespacesInBrowser: true,
+  showNamespaceInModuleHeader: true,
+  sortModulesAlphabetically: false,
+
+  builtInTypes: [
+    {
+      name: 'AssertionError',
+      href: 'https://www.npmjs.com/package/assertion-error'
+    },
+
+    // React
+    {
+      name: 'React',
+      href: 'https://facebook.github.io/react/docs/component-api.html',
+    },
+    {
+      name: 'React.Class',
+      href: 'https://facebook.github.io/react/docs/component-api.html',
+    },
+    {
+      name: 'React.Component',
+      href: 'https://facebook.github.io/react/docs/component-api.html',
+    },
+
+    // Native browser elements
+    {
+      name: 'Event',
+      href: 'https://developer.mozilla.org/en/docs/Web/API/Event',
+    },
+    {
+      name: 'HTMLElement',
+      href: 'https://developer.mozilla.org/en/docs/Web/API/HTMLElement',
+    },
+    {
+      name: 'Node',
+      href: 'https://developer.mozilla.org/en/docs/Web/API/Node',
+    },
+    {
+      name: 'Selector',
+      href: 'https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors',
+    },
+    {
+      name: 'DraftJS.SelectionState',
+      href: 'https://draftjs.org/docs/api-reference-selection-state.html#content',
+    }
+  ]
 }, config)
 
 const sidebarLayout = {
@@ -36,6 +84,59 @@ const sidebarLayout = {
       name: 'Markdown::Browser',
       using: 'examples'
     },
+    {
+      name: 'Core::SidebarHeader',
+      options: {
+        text: 'Addons'
+      }
+    },
+    {
+      name: 'Markdown::Browser',
+      using: 'addons'
+    },
+  ]
+}
+
+const addonSidebarLayout = {
+  name: 'Core::Sidebar',
+  outlets: [
+    {
+      name: 'Core::SidebarHeader',
+      options: {
+        text: 'Draft.js API'
+      }
+    },
+    {
+      name: 'JS::Browser',
+      using: 'addons-api',
+      options: {
+        filter: [
+          { filePath: 'addons/draft-js/*' }
+        ]
+      },
+    },
+    {
+      name: 'Core::SidebarHeader',
+      options: {
+        text: 'Pikaday API'
+      }
+    },
+    {
+      name: 'JS::Browser',
+      using: 'addons-api',
+      options: {
+        filter: [
+          { filePath: 'addons/pikaday/*' }
+        ]
+      },
+    },
+    {
+      name: 'Core::Link',
+      options: {
+        text: 'Back',
+        to: 'README.md'
+      }
+    }
   ]
 }
 
@@ -51,7 +152,7 @@ var config = {
     },
 
     footer: '',
-    styleSheet: path.resolve(__dirname, 'doc/style.less'),
+    styleSheet: path.resolve(__dirname, 'megadoc.conf.less'),
 
     banner: false,
     fixedSidebar: true,
@@ -60,6 +161,22 @@ var config = {
 
     layoutOptions: {
       customLayouts: [
+        {
+          match: { by: 'namespace', on: 'addons-api' },
+          regions: [
+            {
+              name: 'Core::Content',
+              options: { framed: true },
+              outlets: [
+                {
+                  name: 'JS::Module'
+                },
+              ]
+            },
+            addonSidebarLayout
+          ]
+        },
+
         {
           match: { by: 'namespace', on: 'api' },
           regions: [
@@ -76,7 +193,7 @@ var config = {
           ]
         },
         {
-          match: { by: 'namespace', on: ['articles', 'examples'] },
+          match: { by: 'namespace', on: ['articles', 'examples', 'addons'] },
           regions: [
             {
               name: 'Core::Content',
@@ -122,6 +239,23 @@ config.sources = [
       sanitize: true
     } ],
   },
+  {
+    id: 'addons',
+    include: [
+      'addons/*/README.md'
+    ],
+
+    processor: [ 'megadoc-plugin-markdown', {
+      baseURL: '/addons',
+      title: 'Addons',
+      sanitize: true,
+      titleOverrides: {
+        'addons/react-blessed/README.md': 'React Blessed',
+        'addons/draft-js/README.md': 'Draft.js',
+        'addons/pikaday/README.md': 'Pikaday',
+      }
+    }],
+  },
 
   {
     id: 'api',
@@ -137,54 +271,25 @@ config.sources = [
     processor: [ 'megadoc-plugin-js', configureJS({
       id: 'api',
       baseURL: '/api',
-      title: 'react-drill',
+      title: 'API',
+    })],
+  },
 
-      inferModuleIdFromFileName: true,
-      useDirAsNamespace: true,
-      linkToNamespacesInBrowser: true,
-      showNamespaceInModuleHeader: true,
-      sortModulesAlphabetically: false,
+  {
+    id: 'addons-api',
+    include: [
+      'addons/*/*.js',
+    ],
 
-      builtInTypes: [
-        {
-          name: 'AssertionError',
-          href: 'https://www.npmjs.com/package/assertion-error'
-        },
+    exclude: [
+      '**/*.test.js',
+    ],
 
-        // React
-        {
-          name: 'React',
-          href: 'https://facebook.github.io/react/docs/component-api.html',
-        },
-        {
-          name: 'React.Class',
-          href: 'https://facebook.github.io/react/docs/component-api.html',
-        },
-        {
-          name: 'React.Component',
-          href: 'https://facebook.github.io/react/docs/component-api.html',
-        },
-
-        // Native browser elements
-        {
-          name: 'Event',
-          href: 'https://developer.mozilla.org/en/docs/Web/API/Event',
-        },
-        {
-          name: 'HTMLElement',
-          href: 'https://developer.mozilla.org/en/docs/Web/API/HTMLElement',
-        },
-        {
-          name: 'Node',
-          href: 'https://developer.mozilla.org/en/docs/Web/API/Node',
-        },
-        {
-          name: 'Selector',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors',
-        }
-      ]
-
-    }) ],
+    processor: [ 'megadoc-plugin-js', configureJS({
+      id: 'addons-api',
+      baseURL: '/addons/api',
+      title: 'Addon API',
+    })],
   },
 ];
 
