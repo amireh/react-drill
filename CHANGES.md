@@ -16,6 +16,16 @@
 - Custom actions can now be registered globally (on the Scope prototype) using
   the [[drill.registerAction]] interface.
 
+**Bugfixes**
+
+- Fixed an issue with component selectors (e.g.
+  [[Selectors.findComponentByType]]) that would incorrectly locate components
+  whose DOM nodes are not necessarily descendants of the Scope's current DOM
+  nodes.
+
+  There's a chance this may have caused some false positives in your tests -
+  sorry!
+
 **Breaking changes**
 
 The following functions were **dropped** from the [[Scope]] object because they
