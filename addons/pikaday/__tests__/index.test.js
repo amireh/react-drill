@@ -42,17 +42,33 @@ describe('pikaday', function() {
   rs.autoRender()
 
   it('can warp to one', function() {
-    const warpToDatePicker = function() {
-      return (
-        this.find(DatePicker)
-          .ref('pikaday', x => x.pikaday)
+    const scope = rs.scope
+      .find(DatePicker)
+        .ref('pikaday', x => x.pikaday)
+        .morph(PikadayScope)
+
+    assert.ok(scope instanceof PikadayScope)
+  })
+
+  it('whines if "pikaday" ref was not found', function() {
+    assert.throws(function() {
+      rs.scope
+        .find(DatePicker)
           .morph(PikadayScope)
-      )
-    }
+    }, /Expected a "pikaday" ref to be assigned\!/)
+  })
 
-    const pScope = warpToDatePicker.call(rs.scope)
+  it("whines if pikaday's field is not an INPUT", function() {
+    const badPikaday = new Pikaday({
+      field: document.createElement('div'),
+    });
 
-    assert.ok(pScope instanceof PikadayScope)
+    assert.throws(function() {
+      rs.scope
+        .find(DatePicker)
+          .ref('pikaday', () => badPikaday)
+          .morph(PikadayScope)
+    }, /Expected Pikaday field to be an \<input \/\>\!/)
   })
 
   describe('actions', function() {

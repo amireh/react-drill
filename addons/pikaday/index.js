@@ -1,4 +1,5 @@
 const { Scope, Actions } = require('react-drill');
+const invariant = require('invariant');
 const { dispatchNativeEvent } = Actions
 
 /**
@@ -15,13 +16,13 @@ const { dispatchNativeEvent } = Actions
 function PikadayScope() {
   Scope.apply(this, arguments);
 
-  assert(this.refs.pikaday,
-    `Expected a Pikaday "ref" to be assigned to the scope!`
+  invariant(this.refs.pikaday,
+    `Expected a "pikaday" ref to be assigned!`
   )
 
   const field = selectField(this)
 
-  assert(field && field.tagName === 'INPUT',
+  invariant(field && field.tagName === 'INPUT',
     `Expected Pikaday field to be an <input />!`
   )
 
