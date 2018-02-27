@@ -58,6 +58,10 @@ user.
   `clipboardEvent` properties data field (type `text`.) If you are relying on
   the previous behavior, consider calling `.fillIn(text)` on the scope first.
 
+  Please note that this only works on Chrome right now since it's the only
+  browser that currently supports instantiating `DataTransfer` objects. For
+  other browsers we fall back to the previous behavior.
+
 - [[Actions.typeIn]] no longer implicitly focuses the target nor does it fill
   in the target's "value" property with the text. Instead, it triggers events
   for each character as React would in the browser if the user were to type.
