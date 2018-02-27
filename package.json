@@ -54,6 +54,7 @@
     "megadoc-theme-minimalist": "6.0.0",
     "mocha": "5.0.1",
     "object-assign": "4.1.0",
+    "pikaday": "1.7.0",
     "react": "15.5.4",
     "react-blessed": "0.x",
     "react-dom": "15.5.4",

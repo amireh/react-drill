@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const { Selectors } = require('../../');
+const { drill, Selectors } = require('../../');
 const assign = require('object-assign');
 
 function reactSuite(mochaSuite, Type, initialProps) {
@@ -25,6 +25,12 @@ function reactSuite(mochaSuite, Type, initialProps) {
     }
   });
 
+  Object.defineProperty(API, 'scope', {
+    get() {
+      return drill(component);
+    }
+  });
+
   mochaSuite.beforeEach(function() {
     container = document.createElement('div');
     Selectors.setRootNode(container);
@@ -43,7 +49,14 @@ function reactSuite(mochaSuite, Type, initialProps) {
     component = ReactDOM.render(<Type {...props} />, container);
   }
 
+  API.autoRender = function() {
+    mochaSuite.beforeEach(() => {
+      API.render()
+    })
+  }
+
   return API;
 }
+
 
 module.exports = reactSuite;

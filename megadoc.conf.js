@@ -14,6 +14,8 @@ var configureJS = config => Object.assign({}, {
   sortModulesAlphabetically: false,
 
   builtInTypes: [
+    'Class',
+
     {
       name: 'AssertionError',
       href: 'https://www.npmjs.com/package/assertion-error'

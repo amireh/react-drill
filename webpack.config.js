@@ -23,7 +23,9 @@ module.exports = {
     rules: [
       {
         test: /\.test\.js$/,
-        include: [ __dirname + '/lib' ],
+        include: [
+          path.resolve(__dirname, 'lib'),
+        ],
         loader: 'babel-loader',
         options: {
           plugins: ['babel-plugin-istanbul', {

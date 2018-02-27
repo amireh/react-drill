@@ -74,7 +74,8 @@ module.exports = function(config) {
       entry: undefined,
       resolve: {
         alias: {
-          'test': path.resolve(__dirname, 'test')
+          'react-drill': path.resolve(__dirname, 'lib/index.js'),
+          'test': path.resolve(__dirname, 'test'),
         },
       },
 
@@ -83,7 +84,11 @@ module.exports = function(config) {
           {
             test: /\.js$/,
             include: [
-              path.resolve(__dirname, 'lib')
+              path.resolve(__dirname, 'lib'),
+              path.resolve(__dirname, 'addons'),
+            ],
+            exclude: [
+              /node_modules/
             ],
             loader: 'babel-loader',
             options: {
@@ -94,7 +99,11 @@ module.exports = function(config) {
             test: /\.test\.js$|test\/.*\.js$/,
             include: [
               path.resolve(__dirname, 'lib'),
-              path.resolve(__dirname, 'test')
+              path.resolve(__dirname, 'test'),
+              path.resolve(__dirname, 'addons'),
+            ],
+            exclude: [
+              /node_modules/
             ],
             loader: 'babel-loader',
             options: {

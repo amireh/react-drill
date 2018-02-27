@@ -1,20 +1,31 @@
-const { drill, Scope } = require('react-drill');
+const { Scope, Actions } = require('react-drill');
+const { dispatchNativeEvent } = Actions
 
 /**
  * @extends Scope
  * @class
  *
- * A drilling scope for manipulating Pikaday components. You shouldn't
- * instantiate this directly; use [[warpToDatePicker]] instead.
+ * A drilling scope for manipulating Pikaday objects.
  *
- * @example
- *
- *     drill(subject).warpToDatePicker()
- *       .chooseDay(15)
- *     ;
+ * - Pikaday MUST be initialized with an `<input />` control for this to work.
+ * - A [[ref | Scope#ref]] to the Pikaday object must be registered before
+ *   attempting to morph into this scope. See [[the README | ./README.md]] if
+ *   you haven't.
  */
 function PikadayScope() {
-  return Scope.apply(this, arguments);
+  Scope.apply(this, arguments);
+
+  assert(this.refs.pikaday,
+    `Expected a Pikaday "ref" to be assigned to the scope!`
+  )
+
+  const field = selectField(this)
+
+  assert(field && field.tagName === 'INPUT',
+    `Expected Pikaday field to be an <input />!`
+  )
+
+  this.nodes = [ this.refs.pikaday.el ].concat(this.nodes)
 }
 
 PikadayScope.prototype = Object.create(Scope.prototype);
@@ -25,9 +36,20 @@ PikadayScope.prototype = Object.create(Scope.prototype);
  * @return {PikadayScope}
  */
 PikadayScope.prototype.open = function() {
-  const datePickerScope = locateRootDatePickerScope.call(this);
+  Actions.clickNative(selectField(this))
 
-  datePickerScope.find(':input').node.click();
+  return this;
+};
+
+/**
+ * Close an open Pikaday dialog.
+ *
+ * @return {PikadayScope}
+ */
+PikadayScope.prototype.close = function() {
+  if (this.isOpen()) {
+    Actions.clickNative(document.body)
+  }
 
   return this;
 };
@@ -36,16 +58,21 @@ PikadayScope.prototype.open = function() {
  * Fill in a date not through the date picker but through the input box.
  *
  * @param {String} dateString
- *        Something like '3/24/1979' or '11-1-1999'.
+ *        Something like "3/24/1979" or "11-1-1999".
  *
  * @return {PikadayScope}
  */
 PikadayScope.prototype.writeDate = function(dateString) {
-  const datePickerScope = locateRootDatePickerScope.call(this);
+  const field = selectField(this)
 
-  datePickerScope.find(':input').fillIn(dateString).blur();
+  field.focus()
+  field.value = dateString
 
-  return this;
+  dispatchNativeEvent(field, 'change')
+
+  field.blur()
+
+  return this
 };
 
 /**
@@ -53,7 +80,7 @@ PikadayScope.prototype.writeDate = function(dateString) {
  *         The current date that is displayed to the user in the input control.
  */
 PikadayScope.prototype.queryDisplayDate = function() {
-  return locateRootDatePickerScope.call(this).find(':input').node.value;
+  return selectField(this).value
 };
 
 /**
@@ -64,10 +91,7 @@ PikadayScope.prototype.queryDisplayDate = function() {
  * @return {PikadayScope}
  */
 PikadayScope.prototype.chooseYear = function(year) {
-  locateRootDatePickerScope.call(this).component
-    ._pikaday
-      .gotoYear(year)
-  ;
+  this.refs.pikaday.gotoYear(year);
 
   return this;
 };
@@ -76,15 +100,12 @@ PikadayScope.prototype.chooseYear = function(year) {
  * Select a month in the Pikaday picker.
  *
  * @param  {Number} monthIndex
- *         Index of the month, e.g. 1-12.
+ *         Index of the month starting from 1 through 12.
  *
  * @return {PikadayScope}
  */
 PikadayScope.prototype.chooseMonth = function(monthIndex) {
-  locateRootDatePickerScope.call(this).component
-    ._pikaday
-      .gotoMonth(monthIndex - 1)
-  ;
+  this.refs.pikaday.gotoMonth(monthIndex - 1);
 
   return this;
 };
@@ -105,56 +126,20 @@ PikadayScope.prototype.chooseDay = function(dayIndex) {
 
   buttonNode.dispatchEvent(event);
 
-  return this;
+  return this
 };
 
 /**
- * @module warpToDatePicker
+ * Whether the picker is open (as reported by pikaday, not the UI.)
  *
- * Refine the scope so that its DOM node is that of the Pikaday's instance.
- *
- *     drill(subject)
- *       .find(ComponentThatHasPikaday)
- *         .warpToDatePicker()
- *           .open()
- *           .chooseDay(13)
- *
- * @param {String} propName
- *        The property on which the Pikaday instance can be found.
- *
- * @return {Scope}
+ * @return {Boolean}
  */
-drill.registerExtension('warpToDatePicker', function warpToDatePicker(propName) {
-  const parentScope = this;
-  const { component, node } = this;
+PikadayScope.prototype.isOpen = function() {
+  return this.refs.pikaday.isVisible();
+};
 
-  return new PikadayScope(component, [
-    component[propName].el,
-    node
-  ], [ parentScope, 'DatePicker (Pikaday)' ].join(' > '), parentScope);
-});
-
-function locateRootDatePickerScope() {
-  let rootScope = null;
-  let scope = this;
-
-  do {
-    if (
-      scope.constructor === PikadayScope &&
-      scope.parentScope &&
-      scope.parentScope.constructor !== PikadayScope
-    ) {
-      rootScope = scope.parentScope;
-      break;
-    }
-
-    scope = scope.parentScope;
-  } while (!rootScope && scope.parentScope);
-
-  return new Scope(
-    rootScope.component,
-    rootScope.nodes.slice(1),
-    rootScope.path,
-    rootScope.parentScope
-  );
+function selectField(scope) {
+  return scope.refs.pikaday._o.field
 }
+
+exports.PikadayScope = PikadayScope

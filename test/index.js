@@ -1,4 +1,10 @@
 window.assert = require('chai').assert;
 
-const tests = require.context('../lib', true, /.test.js$/);
-tests.keys().forEach(tests);
+const allTests = [
+  require.context('../lib', true, /.test.js$/),
+  require.context('../addons/pikaday/__tests__', true, /\.test\.js$/),
+]
+
+allTests.forEach(tests => {
+  tests.keys().forEach(tests)
+})
