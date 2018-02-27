@@ -4,11 +4,17 @@
   "description": "React DOM test utils.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js -p",
     "lint": "./node_modules/.bin/eslint 'lib/**/*.js' 'addons/**/*.js'",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers Firefox",
-    "prepublish": "npm run lint && npm run build && npm run test"
+    "prepublish": "npm run lint && npm run test"
   },
+  "files": [
+    "addons",
+    "lib",
+    "CHANGES.md",
+    "README.md",
+    "UPGRADE.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/amireh/react-drill.git"
