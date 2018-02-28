@@ -10,4 +10,3 @@ script:
 node_js:
   - "stable"
   - "4"
-  - "0.12"

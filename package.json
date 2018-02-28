@@ -59,7 +59,7 @@
     "react-blessed": "0.x",
     "react-dom": "15.5.4",
     "sinon": "4.4.2",
-    "webpack": "4.0.0"
+    "webpack": "3.11.0"
   },
   "optionalDependencies": {},
   "peerDependencies": {

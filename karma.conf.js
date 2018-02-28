@@ -70,7 +70,6 @@ module.exports = function(config) {
 
     webpack: Object.assign({}, require('./webpack.config.js'), {
       devtool: 'eval',
-      mode: 'development',
       entry: undefined,
       resolve: {
         alias: {
