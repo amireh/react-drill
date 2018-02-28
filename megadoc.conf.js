@@ -51,10 +51,6 @@ var configureJS = config => Object.assign({}, {
     {
       name: 'Selector',
       href: 'https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors',
-    },
-    {
-      name: 'DraftJS.SelectionState',
-      href: 'https://draftjs.org/docs/api-reference-selection-state.html#content',
     }
   ]
 }, config)
@@ -102,21 +98,6 @@ const sidebarLayout = {
 const addonSidebarLayout = {
   name: 'Core::Sidebar',
   outlets: [
-    {
-      name: 'Core::SidebarHeader',
-      options: {
-        text: 'Draft.js API'
-      }
-    },
-    {
-      name: 'JS::Browser',
-      using: 'addons-api',
-      options: {
-        filter: [
-          { filePath: 'addons/draft-js/*' }
-        ]
-      },
-    },
     {
       name: 'Core::SidebarHeader',
       options: {
@@ -259,7 +240,6 @@ config.sources = [
       sanitize: true,
       titleOverrides: {
         'addons/react-blessed/README.md': 'React Blessed',
-        'addons/draft-js/README.md': 'Draft.js',
         'addons/pikaday/README.md': 'Pikaday',
       }
     }],
