@@ -5,7 +5,7 @@ const { findDOMNode } = require('react-dom')
 const { assertChange, reactSuite } = require('test/helpers')
 
 describe('pikaday', function() {
-  const Screen = React.createClass({
+  class Screen extends React.Component {
     render() {
       return (
         <div>
@@ -13,9 +13,9 @@ describe('pikaday', function() {
         </div>
       )
     }
-  })
+  }
 
-  const DatePicker = React.createClass({
+  class DatePicker extends React.Component {
     componentDidMount() {
       this.pikaday = new Pikaday({
         field: findDOMNode(this),
@@ -23,19 +23,19 @@ describe('pikaday', function() {
         onSelect: this.props.onChange || Function.prototype,
         setDefaultDate: true,
       });
-    },
+    }
 
     componentWillUnmount() {
       this.pikaday.destroy();
       this.pikaday = null;
-    },
+    }
 
     render() {
       return (
         <input type="text" />
       )
     }
-  })
+  }
 
   const rs = reactSuite(this, Screen, {})
 
