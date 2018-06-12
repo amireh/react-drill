@@ -122,6 +122,17 @@ node.
 
 You can not use this library if you're using stateless components exclusively.
 
+### My tests are failing when drilling into an  "\<\<unknown\>\>" component
+
+Drill will output the tag `<<unknown>>` if it can't find the displayName for
+a component. If you are using ES6 classes for your React components, make sure you're
+assigning a name rather than using anonymous classes. If you're using `createReactClass()`
+from the `create-react-class` package, Drill should automatically infer the component name,
+but you can always add a `displayName: "MyComponent"` property to your createReactClass call.
+
+The displayName is useful for debugging and tracing component hierarchies, so your Drill experience
+will be easier if you keep the above in mind.
+
 ## License
 
 MIT

@@ -1,10 +1,11 @@
 const React = require('react');
-const Button = React.createClass({
+
+class Button extends React.Component {
   render() {
     return (
       <button {...this.props} />
     );
   }
-});
+}
 
 module.exports = Button;
