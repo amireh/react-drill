@@ -1,7 +1,7 @@
 const React = require('react');
 const Button = require('./Button');
 
-const ElementWithButtons = React.createClass({
+class ElementWithButtons extends React.Component {
   render() {
     return (
       <div className="root-element">
@@ -12,6 +12,6 @@ const ElementWithButtons = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = ElementWithButtons;

@@ -1,19 +1,18 @@
 const React = require('react');
-const { arrayOf, shape, string } = React.PropTypes;
+const { arrayOf, shape, string } = require('prop-types');
 
-const ComboBoxItem = React.createClass({
+class ComboBoxItem extends React.Component {
   render() {
     return (
       <li>{this.props.label}</li>
     );
   }
-});
+}
 
-const ComboBox = React.createClass({
-  statics: { Item: ComboBoxItem },
+class ComboBox extends React.Component {
   propTypes: {
     items: arrayOf(shape({ id: string, label: string }))
-  },
+  }
 
   render() {
     return (
@@ -21,11 +20,11 @@ const ComboBox = React.createClass({
         {this.props.items.map(this.renderItem)}
       </ul>
     );
-  },
+  }
 
   renderItem(item) {
     return <ComboBoxItem key={item.id} {...item} />
   }
-});
+}
 
 module.exports = ComboBox;
