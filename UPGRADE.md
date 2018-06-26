@@ -1,11 +1,9 @@
 # Upgrade guide
 
-## Version 3 to 4
+## Version 2 to 3
 
 The React 16 upgrade brings a few breaking changes.
 See the changelog for potential breaks and their fixes.
-
-## Version 2 to 3
 
 There has been a bunch of renames for clarity. Most of these changes are
 straight-forward.
