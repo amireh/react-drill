@@ -43,7 +43,7 @@ matchers | Matchers]]. They are exported as the `m` symbol:
 
     function hasText(text: String): (blessed.Node): Boolean
 
-Creates a matcher that will scrape the content of some blessed node and all 
+Creates a matcher that will scrape the content of some blessed node and all
 descendant nodes then matches the given string against them.
 
 This also catches the `label` attribute so you can assert that a certain box with the "Failures" label is rendered as such:
@@ -98,13 +98,13 @@ hit this with `blessed.List()` which returns an instance of the type
 1. The ability to drill using ReactBlessed components (like, components you define which render ReactBlessed nodes). Something like this:
 
 ```javascript
-const Log = React.createClass({
+const Log = createReactClass({
   render() {
     return <log>{this.props.messages}</log>
   }
 });
 
-const App = React.createClass({
+const App = createReactClass({
   render() {
     return <box><Log messages={['hi!']} /></box>
   }

@@ -1,10 +1,11 @@
 const React = require('react');
-const Icon = React.createClass({
+
+class Icon extends React.Component {
   render() {
     return (
       <span className="icon" />
     );
   }
-});
+}
 
 module.exports = Icon;
