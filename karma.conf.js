@@ -91,7 +91,14 @@ module.exports = function(config) {
             ],
             loader: 'babel-loader',
             options: {
-              plugins: ['babel-plugin-istanbul']
+              plugins: [
+                ['babel-plugin-istanbul', {
+                  exclude: [
+                    '**/__tests__/',
+                    '**/lib/dependencies/ReactTestUtils.js'
+                  ]
+                }]
+              ]
             }
           },
           {

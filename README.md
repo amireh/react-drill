@@ -122,6 +122,32 @@ node.
 
 You can not use this library if you're using stateless components exclusively.
 
+### Can't find the "react test utils" package
+
+If you're using a version of React lower than 15.5.4 then you need to inject
+drill with the ReactTestUtils object which can be found from the following
+files in different versions:
+
+Version  | File
+-------- | ----
+> 15.5.4 | `react-dom/test-utils`
+> 15.4.1 | `react-addons-test-utils` (NPM package)
+< 15.4.1 | `react/lib/ReactTestUtils.js`
+
+The following script shows how to provide drill with your own version of the
+test utils package:
+
+```javascript
+require('react-drill/lib/dependencies/ReactTestUtils')(
+  require('react-addons-test-utils')
+)
+
+// now you can use react-drill
+const { drill } = require('react-drill')
+```
+
+**MAKE SURE YOU CALL THIS BEFORE REQUIRING DRILL ITSELF!!**
+
 ## License
 
 MIT
