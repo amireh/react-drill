@@ -15,6 +15,8 @@ drill(component)
     .close()
 ```
 
+## API
+
 The API can be found [[here | ./index.js]] but you need to provide your own
 implementation of `warpToPikaday` which has to do three things:
 

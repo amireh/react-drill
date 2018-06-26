@@ -1,6 +1,6 @@
 {
   "name": "react-drill",
-  "version": "3.0.0-rc.6",
+  "version": "3.0.0-rc.7",
   "description": "React DOM test utils.",
   "main": "lib/index.js",
   "scripts": {
@@ -38,6 +38,7 @@
     "blessed": "x",
     "chai": "^3.3.0",
     "chai-assert-change": "1.0.0",
+    "cheerio": "1.0.0-rc.2",
     "eslint": "^1.6.0",
     "eslint-plugin-react": "^3.5.1",
     "istanbul": "0.4.5",

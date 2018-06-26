@@ -13,12 +13,6 @@ module.exports = {
     library: 'ReactDrill',
   },
 
-  // externals: {
-  //   'react': 'React',
-  //   'react/lib/ReactTestUtils': 'ReactTestUtils',
-  //   'jquery': 'jQuery',
-  // },
-
   module: {
     rules: [
       {

@@ -101,17 +101,12 @@ const addonSidebarLayout = {
     {
       name: 'Core::SidebarHeader',
       options: {
-        text: 'Pikaday API'
+        text: 'Addons API'
       }
     },
     {
       name: 'JS::Browser',
       using: 'addons-api',
-      options: {
-        filter: [
-          { filePath: 'addons/pikaday/*' }
-        ]
-      },
     },
     {
       name: 'Core::Link',
@@ -154,9 +149,9 @@ var config = {
                 className: 'api-docs'
               },
               outlets: [
-                {
-                  name: 'JS::Module'
-                },
+                { name: 'JS::ModuleHeader' },
+                { name: 'JS::ModuleIndex' },
+                { name: 'JS::ModuleBody' },
               ]
             },
             addonSidebarLayout
@@ -277,6 +272,7 @@ config.sources = [
       id: 'addons-api',
       baseURL: '/addons/api',
       title: 'Addon API',
+      inferNamespaces: false,
     })],
   },
 ];

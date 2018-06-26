@@ -135,7 +135,8 @@ Version  | File
 < 15.4.1 | `react/lib/ReactTestUtils.js`
 
 The following script shows how to provide drill with your own version of the
-test utils package:
+test utils package. **Make sure you call this before requiring the drill
+itself!**
 
 ```javascript
 require('react-drill/lib/dependencies/ReactTestUtils')(
@@ -146,7 +147,10 @@ require('react-drill/lib/dependencies/ReactTestUtils')(
 const { drill } = require('react-drill')
 ```
 
-**MAKE SURE YOU CALL THIS BEFORE REQUIRING DRILL ITSELF!!**
+### Can it be used without React or a DOM?
+
+Maybe. See [[./examples/using-without-react.md]] or
+[[./addons/react-blessed/README.md]].
 
 ## License
 
