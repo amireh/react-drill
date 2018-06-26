@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="React Drill is a React testing library that facilitates interacting with a DOM
+tree through an expressive API similar to Capybara&#39;s. The library provides a
+number of abstractions for locating particular UI elements using either React
+component classes or DOM selectors and for interacting with them." />
+
+    <title>React Drill</title>
+
+    
+    <link rel="stylesheet" href="assets/megadoc__styles.css" />
+    
+
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+  </head>
+
+  <body class="body--themed">
+    <div id="__app__"><div data-reactroot="" data-reactid="1" data-react-checksum="-1752426799"><div data-reactid="2"></div><!-- react-empty: 3 --><!-- react-empty: 4 --><div class="root root--with-multi-page-layout root--with-two-column-layout root--with-fixed-sidebar root--without-banner" data-reactid="5"><div class="root__screen" data-reactid="6"><div class="two-column-layout two-column-layout--fixed" data-reactid="7"><div class="two-column-layout__left" style="width:320px;" data-reactid="8"><div class="resizable-panel" data-reactid="9"><div class="resizable-panel__content" data-reactid="10"><div data-reactid="11"><div data-reactid="12"><nav class="megadoc-document-browser markdown-browser" data-reactid="13"><div data-reactid="14"><div data-reactid="15"><a href="#react-drill" class="class-browser__entry-link active mega-link mega-link--active mega-link--functional" data-reactid="16"><!-- react-text: 17 -->React Drill<!-- /react-text --></a><div class="markdown-toc" data-reactid="18"><ul class="markdown-toc" data-reactid="19"><li class="markdown-toc__entry" data-reactid="20"><a href="#motivation" class="mega-link mega-link--functional" data-reactid="21">Motivation</a></li><li class="markdown-toc__entry" data-reactid="22"><a href="#usage" class="mega-link mega-link--functional" data-reactid="23">Usage</a></li><li class="markdown-toc__entry markdown-toc__entry--collapsible" data-reactid="24"><i class="icon icon-arrow-right" data-reactid="25"></i><a href="#concepts" class="mega-link mega-link--functional" data-reactid="26">Concepts</a><ul class="markdown-toc" data-reactid="27"><li class="markdown-toc__entry" data-reactid="28"><a href="#scope" class="mega-link mega-link--functional" data-reactid="29">Scope</a></li><li class="markdown-toc__entry" data-reactid="30"><a href="#selectors" class="mega-link mega-link--functional" data-reactid="31">Selectors</a></li><li class="markdown-toc__entry" data-reactid="32"><a href="#matchers" class="mega-link mega-link--functional" data-reactid="33">Matchers</a></li><li class="markdown-toc__entry" data-reactid="34"><a href="#actions" class="mega-link mega-link--functional" data-reactid="35">Actions</a></li></ul></li><li class="markdown-toc__entry" data-reactid="36"><a href="#where-to-go-from-here" class="mega-link mega-link--functional" data-reactid="37">Where to go from here</a></li><li class="markdown-toc__entry markdown-toc__entry--collapsible" data-reactid="38"><i class="icon icon-arrow-right" data-reactid="39"></i><a href="#faq" class="mega-link mega-link--functional" data-reactid="40">FAQ</a><ul class="markdown-toc" data-reactid="41"><li class="markdown-toc__entry" data-reactid="42"><a href="#drill-isn-t-working-with-stateless-components" class="mega-link mega-link--functional" data-reactid="43">Drill isn&#x27;t working with stateless components!</a></li><li class="markdown-toc__entry" data-reactid="44"><a href="#can-t-find-the-react-test-utils-package" class="mega-link mega-link--functional" data-reactid="45">Can&#x27;t find the &quot;react test utils&quot; package</a></li><li class="markdown-toc__entry" data-reactid="46"><a href="#can-it-be-used-without-react-or-a-dom" class="mega-link mega-link--functional" data-reactid="47">Can it be used without React or a DOM?</a></li><li class="markdown-toc__entry" data-reactid="48"><a href="#my-tests-are-failing-when-drilling-into-an-unknown-component" class="mega-link mega-link--functional" data-reactid="49">My tests are failing when drilling into an  unknown component</a></li></ul></li><li class="markdown-toc__entry" data-reactid="50"><a href="#license" class="mega-link mega-link--functional" data-reactid="51">License</a></li></ul></div></div><div data-reactid="52"><a href="changes.html#release-notes" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="53"><!-- react-text: 54 -->Release notes<!-- /react-text --></a></div><div data-reactid="55"><a href="upgrade.html#upgrade-guide" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="56"><!-- react-text: 57 -->Upgrade guide<!-- /react-text --></a></div></div></nav></div><div data-reactid="58"><h3 class="layout__sidebar-header" data-reactid="59">API</h3></div><div data-reactid="60"><nav class="megadoc-document-browser class-browser__listing" data-reactid="61"><div class="class-browser__category" data-reactid="62"><div class="class-browser__entry" data-reactid="63"><a href="api/Actions.html#Actions" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="64"><!-- react-text: 65 -->Actions<!-- /react-text --></a></div><div class="class-browser__entry" data-reactid="66"><a href="api/DOM.html#DOM" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="67"><!-- react-text: 68 -->DOM<!-- /react-text --></a></div><div class="class-browser__entry" data-reactid="69"><a href="api/Matchers.html#Matchers" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="70"><!-- react-text: 71 -->Matchers<!-- /react-text --></a></div><div class="class-browser__entry" data-reactid="72"><a href="api/Scope.html#Scope" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="73"><!-- react-text: 74 -->Scope<!-- /react-text --></a></div><div class="class-browser__entry" data-reactid="75"><a href="api/Selectors.html#Selectors" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="76"><!-- react-text: 77 -->Selectors<!-- /react-text --></a></div><div class="class-browser__entry" data-reactid="78"><a href="api/drill.html#drill" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="79"><!-- react-text: 80 -->drill<!-- /react-text --></a></div></div></nav></div><div data-reactid="81"><h3 class="layout__sidebar-header" data-reactid="82">Examples</h3></div><div data-reactid="83"><nav class="megadoc-document-browser markdown-browser" data-reactid="84"><div data-reactid="85"><div data-reactid="86"><a href="examples/basic.html#getting-started" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="87"><!-- react-text: 88 -->Getting started<!-- /react-text --></a></div><div data-reactid="89"><a href="examples/custom-actions.html#custom-actions" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="90"><!-- react-text: 91 -->Custom actions<!-- /react-text --></a></div><div data-reactid="92"><a href="examples/custom-matchers.html#custom-matchers" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="93"><!-- react-text: 94 -->Custom matchers<!-- /react-text --></a></div><div data-reactid="95"><a href="examples/selecting-elements.html#selecting-things" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="96"><!-- react-text: 97 -->Selecting things<!-- /react-text --></a></div><div data-reactid="98"><a href="examples/teleporting.html#teleporting" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="99"><!-- react-text: 100 -->Teleporting<!-- /react-text --></a></div><div data-reactid="101"><a href="examples/using-without-react.html#using-without-react" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="102"><!-- react-text: 103 -->Using without React<!-- /react-text --></a></div></div></nav></div><div data-reactid="104"><h3 class="layout__sidebar-header" data-reactid="105">Addons</h3></div><div data-reactid="106"><nav class="megadoc-document-browser markdown-browser" data-reactid="107"><div data-reactid="108"><div data-reactid="109"><a href="addons/cheerio-readme.html#cheerio" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="110"><!-- react-text: 111 -->Cheerio<!-- /react-text --></a></div><div data-reactid="112"><a href="addons/pikaday-readme.html#pikaday-drill-addon" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="113"><!-- react-text: 114 -->Pikaday<!-- /react-text --></a></div><div data-reactid="115"><a href="addons/react-blessed-readme.html#react-blessed-drill-addon" class="class-browser__entry-link mega-link mega-link--functional" data-reactid="116"><!-- react-text: 117 -->React Blessed<!-- /react-text --></a></div></div></nav></div></div></div><div class="ui-resizable-handle ui-resizable-e" data-reactid="118"></div></div></div><div class="two-column-layout__right" style="margin-left:320px;" data-reactid="119"><div data-reactid="120"><div class="doc-content" data-reactid="121"><div data-reactid="122"><div data-reactid="123"><div class="highlighted-text " data-reactid="124">
+<h1 class="anchorable-heading">
+  <a name="react-drill" class="anchorable-heading__anchor"></a>
+  <a href="#react-drill" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">React Drill</span>
+</h1><p>React Drill is a React testing library that facilitates interacting with a DOM
+tree through an expressive API similar to <a href="https://github.com/teamc
+apybara/capybara/blob/2.17_stable/README.md#the-dsl" target="_blank">Capybara&#39;s</a>. The library provides a
+number of abstractions for locating particular UI elements using either React
+component classes or DOM selectors and for interacting with them.</p>
+<p>The name &quot;drill&quot; comes from the fact that the API allows you to &quot;drill down&quot; through a React virtual DOM tree to interact with elements in it.</p>
+
+<h2 class="anchorable-heading">
+  <a name="motivation" class="anchorable-heading__anchor"></a>
+  <a href="#motivation" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Motivation</span>
+</h2><ul>
+<li><p>The means to easily express the <em>intent</em> of an interaction instead of
+fiddling around with implementation details like how to trigger the <code>select</code>
+event on a combo box, or how to simulate typing into a text widget.</p>
+<p>Drill does this by providing a set of uniform APIs that can abstract this
+away:</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>TextField<span class="token punctuation" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >typeIn</span><span class="token punctuation" >(</span><span class="token string" >'hello world'</span><span class="token punctuation" >)</span></code></pre></li>
+<li><p>The possibility of not relying on CSS classes or DOM selectors to find
+elements to interact with. Instead, one can use the source React component
+class as a selector:</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>Button<span class="token punctuation" >,</span> m<span class="token punctuation" >.</span><span class="token function" >hasText</span><span class="token punctuation" >(</span><span class="token string" >'Save'</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span>
+    <span class="token punctuation" >.</span><span class="token function" >click</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span></code></pre></li>
+</ul>
+
+<h2 class="anchorable-heading">
+  <a name="usage" class="anchorable-heading__anchor"></a>
+  <a href="#usage" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Usage</span>
+</h2><p>To install the package you can get it from npm:</p>
+<pre class="language-bash"><code>npm <span class="token function" >install</span> --save-dev react-drill</code></pre><p>It is recommended to go quickly over the <a href="#concepts" class="mega-link--internal">concepts</a>
+before jumping into the API.</p>
+
+<h2 class="anchorable-heading">
+  <a name="concepts" class="anchorable-heading__anchor"></a>
+  <a href="#concepts" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Concepts</span>
+</h2><p>Drill&#39;s API is driven by four concepts: the scope object, selectors, matchers,
+and actions. This section will walk you through them.</p>
+
+<h3 class="anchorable-heading">
+  <a name="scope" class="anchorable-heading__anchor"></a>
+  <a href="#scope" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Scope</span>
+</h3><p>A <a href="api/Scope.html" title=" A scope is an object that represents the React components and DOM nodes you want to interact with. When you [[drill]] into a tree, you get a scope back. " class="mega-link--internal">scope</a> is an object that represents the current React component
+and a set of DOM nodes that you&#39;re able to interact with. When you <a href="api/drill.html" title=" Drill into a rendered component and start kicking. This is the main export of the library. " class="mega-link--internal">drill</a>
+into a tree, you get a scope back.</p>
+<p>The scope APIs are chainable in that most of them return another scope back for
+you, unless they&#39;re <a href="#actions" class="mega-link--internal">actions</a> then they&#39;d return the same
+scope back.</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>    <span class="token comment" spellcheck="true">// => Scope.&lt;component, [findDOMNode(component)]></span>
+  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>Menu<span class="token punctuation" >)</span>       <span class="token comment" spellcheck="true">// => Scope.&lt;Menu, [findDOMNode(Menu)]></span>
+    <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span><span class="token string" >'button'</span><span class="token punctuation" >)</span> <span class="token comment" spellcheck="true">// => Scope.&lt;Menu, [HTMLElement.&lt;button>]></span>
+      <span class="token punctuation" >.</span><span class="token function" >click</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>      <span class="token comment" spellcheck="true">// => Scope.&lt;Menu, [HTMLElement.&lt;button>]></span>
+      <span class="token punctuation" >.</span><span class="token function" >blur</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span>       <span class="token comment" spellcheck="true">// => Scope.&lt;Menu, [HTMLElement.&lt;button>]></span></code></pre><p><strong>Next</strong>: we can create scopes but how do we refine them to represent other
+components and DOM nodes down the tree?</p>
+
+<h3 class="anchorable-heading">
+  <a name="selectors" class="anchorable-heading__anchor"></a>
+  <a href="#selectors" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Selectors</span>
+</h3><p>A selector is a function that locates React components <em>or</em> DOM nodes inside
+the current scope matching criteria you specify. The most common selectors are
+<a href="api/Scope.html##find" title=" Find a single component or DOM node within this scope. " class="mega-link--internal">Scope#find</a> and <a href="api/Scope.html##findAll" title=" Find one or more components or DOM nodes within this scope. " class="mega-link--internal">Scope#findAll</a>.</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>Menu<span class="token punctuation" >)</span>        <span class="token comment" spellcheck="true">// find is a selector</span>
+    <span class="token punctuation" >.</span><span class="token function" >findAll</span><span class="token punctuation" >(</span>Button<span class="token punctuation" >)</span> <span class="token comment" spellcheck="true">// findAll is also a selector</span></code></pre><p><strong>Next:</strong> we&#39;re now able to create scopes and select elements, but not
+particular ones. Can we refine our selection further?</p>
+
+<h3 class="anchorable-heading">
+  <a name="matchers" class="anchorable-heading__anchor"></a>
+  <a href="#matchers" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Matchers</span>
+</h3><p>A <a href="api/Matchers.html#~Matcher" class="mega-link--internal">matcher</a> is a predicate function that allows you to refine your
+selection to locate a most particular element in your scope. All <a href="#selectors" class="mega-link--internal">selectors</a> accept a matcher.</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >find</span><span class="token punctuation" >(</span>Button<span class="token punctuation" >,</span> m<span class="token punctuation" >.</span><span class="token function" >hasText</span><span class="token punctuation" >(</span><span class="token string" >'Save'</span><span class="token punctuation" >)</span><span class="token punctuation" >)</span> <span class="token comment" spellcheck="true">// hasText is a matcher</span></code></pre><p>A list of <a href="api/Matchers.html" title=" Functions for locating particular a DOM node or component from the list of matches found by [[Scope#find]]. " class="mega-link--internal">common matchers</a> is available for your convenience and
+you can <a href="examples/custom-matchers.html" title=" Let&#39;s assume we want to implement a matcher that filters components that have exactly the props we ask for. Although a similar matcher already exists ([[Matchers.hasProp]]), it only allows testing for a single prop. " class="mega-link--internal">build your own</a> too.</p>
+<p><strong>Next:</strong> with the ability to locate particular elements using selectors and
+matchers, we now need a way to interact with them.</p>
+
+<h3 class="anchorable-heading">
+  <a name="actions" class="anchorable-heading__anchor"></a>
+  <a href="#actions" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Actions</span>
+</h3><p>An action is a function that takes a scope and interacts with its DOM node(s)
+or its component, such as by clicking, blurring, or typing in.</p>
+<p>The <a href="api/Actions.html" title=" Functions for simulating events on DOM nodes and React components. " class="mega-link--internal">pre-made actions</a> are available directly on the stock
+<a href="api/Scope.html" title=" A scope is an object that represents the React components and DOM nodes you want to interact with. When you [[drill]] into a tree, you get a scope back. " class="mega-link--internal">Scope</a> object.</p>
+<pre class="language-javascript"><code><span class="token function" >drill</span><span class="token punctuation" >(</span>component<span class="token punctuation" >)</span>
+  <span class="token punctuation" >.</span><span class="token function" >click</span><span class="token punctuation" >(</span><span class="token punctuation" >)</span> <span class="token comment" spellcheck="true">// click is an action</span></code></pre><p>Just like with matchers, you can <a href="examples/custom-actions.html" title=" An [[action | Actions]] has a flexible signature: " class="mega-link--internal">define your own actions</a> too.</p>
+
+<h2 class="anchorable-heading">
+  <a name="where-to-go-from-here" class="anchorable-heading__anchor"></a>
+  <a href="#where-to-go-from-here" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Where to go from here</span>
+</h2><p>See <a href="api/drill.html" title=" Drill into a rendered component and start kicking. This is the main export of the library. " class="mega-link--internal">drill</a> for creating a scope and then the <a href="api/Scope.html" title=" A scope is an object that represents the React components and DOM nodes you want to interact with. When you [[drill]] into a tree, you get a scope back. " class="mega-link--internal">Scope</a> itself for more
+possibilities. Or if you&#39;d prefer to see examples first, browse from the
+sidebar to the left.</p>
+
+<h2 class="anchorable-heading">
+  <a name="faq" class="anchorable-heading__anchor"></a>
+  <a href="#faq" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">FAQ</span>
+</h2>
+<h3 class="anchorable-heading">
+  <a name="drill-isn-t-working-with-stateless-components" class="anchorable-heading__anchor"></a>
+  <a href="#drill-isn-t-working-with-stateless-components" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Drill isn't working with stateless components!</span>
+</h3><p>It cannot since they have no instance to represent them and the <a href="#scope" class="mega-link--internal">Scope</a> needs
+one otherwise it cannot tell what&#39;s a component and what&#39;s a (virtual) DOM
+node.</p>
+<p>You can not use this library if you&#39;re using stateless components exclusively.</p>
+
+<h3 class="anchorable-heading">
+  <a name="can-t-find-the-react-test-utils-package" class="anchorable-heading__anchor"></a>
+  <a href="#can-t-find-the-react-test-utils-package" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Can't find the "react test utils" package</span>
+</h3><p>If you&#39;re using a version of React lower than 15.5.4 then you need to inject
+drill with the ReactTestUtils object which can be found from the following
+files in different versions:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt; 15.5.4</td>
+<td><code>react-dom/test-utils</code></td>
+</tr>
+<tr>
+<td>&gt; 15.4.1</td>
+<td><code>react-addons-test-utils</code> (NPM package)</td>
+</tr>
+<tr>
+<td>&lt; 15.4.1</td>
+<td><code>react/lib/ReactTestUtils.js</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following script shows how to provide drill with your own version of the
+test utils package. <strong>Make sure you call this before requiring the drill
+itself!</strong></p>
+<pre class="language-javascript"><code><span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'react-drill/lib/dependencies/ReactTestUtils'</span><span class="token punctuation" >)</span><span class="token punctuation" >(</span>
+  <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'react-addons-test-utils'</span><span class="token punctuation" >)</span>
+<span class="token punctuation" >)</span>
+
+<span class="token comment" spellcheck="true">// now you can use react-drill</span>
+<span class="token keyword" >const</span> <span class="token punctuation" >{</span> drill <span class="token punctuation" >}</span> <span class="token operator" >=</span> <span class="token function" >require</span><span class="token punctuation" >(</span><span class="token string" >'react-drill'</span><span class="token punctuation" >)</span></code></pre>
+<h3 class="anchorable-heading">
+  <a name="can-it-be-used-without-react-or-a-dom" class="anchorable-heading__anchor"></a>
+  <a href="#can-it-be-used-without-react-or-a-dom" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">Can it be used without React or a DOM?</span>
+</h3><p>Maybe. See <a href="examples/using-without-react.html" title=" For the odd case when you&#39;re dealing with raw HTML strings and not app-layer components, it&#39;s also possible to use the drill to work with the markup in a more declarative manner -- (almost) just as if it&#39;s been rendered by a component. " class="mega-link--internal">Using without React</a> or
+<a href="addons/react-blessed-readme.html" title=" This add-on currently provides rather minimal support for drilling into blessed nodes rendered using react- blessed. " class="mega-link--internal">React Blessed</a>.</p>
+
+<h3 class="anchorable-heading">
+  <a name="my-tests-are-failing-when-drilling-into-an-unknown-component" class="anchorable-heading__anchor"></a>
+  <a href="#my-tests-are-failing-when-drilling-into-an-unknown-component" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">My tests are failing when drilling into an  unknown component</span>
+</h3><p>Drill will output the tag <code>&lt;&lt;unknown&gt;&gt;</code> if it can&#39;t find the displayName for a
+component. If you are using ES6 classes for your React components, make sure
+you&#39;re assigning a name rather than using anonymous classes. If you&#39;re using
+<code>createReactClass()</code> from the <code>create-react-class</code> package, Drill should
+automatically infer the component name, but you can always add a <code>displayName:
+&quot;MyComponent&quot;</code> property to your createReactClass call.</p>
+<p>The displayName is useful for debugging and tracing component hierarchies, so
+your Drill experience will be easier if you keep the above in mind.</p>
+
+<h2 class="anchorable-heading">
+  <a name="license" class="anchorable-heading__anchor"></a>
+  <a href="#license" class="anchorable-heading__link icon icon-link"></a><span class="anchorable-heading__text">License</span>
+</h2><p>MIT</p>
+</div></div></div></div><!-- react-text: 125 --><!-- /react-text --></div></div></div></div></div></div></div>
+
+    <!-- Prepare UMD container -->
+    <script>
+      window.exports = {};
+    </script>
+
+    <!-- Megadoc core scripts -->
+    
+    <script type="text/javascript" src="assets/megadoc__config.js"></script>
+    
+    <script type="text/javascript" src="assets/megadoc__vendor.js"></script>
+    
+    <script type="text/javascript" src="assets/megadoc.js"></script>
+    
+
+    <!-- Re-export common modules into MEGADOC_PUBLIC_MODULES -->
+    <script type="text/javascript" src="assets/megadoc__common.js"></script>
+    <script>
+      window.MEGADOC_PUBLIC_MODULES = exports['megadoc__common'];
+    </script>
+
+    <!-- Collect plugin script exports -->
+    
+    <script type="text/javascript" src="assets/megadoc-plugin-markdown.js"></script>
+    
+    <script type="text/javascript" src="assets/megadoc-plugin-js.js"></script>
+    
+    <script type="text/javascript" src="assets/megadoc-theme-minimalist.js"></script>
+    
+
+    <!-- Load the plugins and start the client -->
+    <script>
+      window.startingDocumentUID = "2d966dc411c413a357e52bb0843e96ac";
+      window.startingDocumentHref = "/index.html";
+      window.MEGADOC_PLUGINS = Object.keys(exports)
+        .filter(function(key) {
+          var thing = exports[key];
+
+          return (
+            thing &&
+            typeof thing === 'object' &&
+            typeof thing.name === 'string' &&
+            (
+              thing.plugin === true ||
+              /megadoc-(theme|plugin)-/.test(thing.name)
+            )
+          );
+        })
+        .map(function(key) {
+          return exports[key];
+        })
+      ;
+
+      exports['megadoc'].startApp(exports['megadoc__config'], {
+        startingDocumentUID: window.startingDocumentUID,
+        startingDocumentHref: window.startingDocumentHref,
+        plugins: window.MEGADOC_PLUGINS,
+      });
+    </script>
+  </body>
+</html>
