@@ -117,9 +117,9 @@ guidance.
     components displayName's, which could potentially cause false negatives in
     your tests.
   - https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactcreateclass
-- You can still use react-drill v4 if your codebase is on React 15 or lower. If
+- You can still use react-drill 3.0.0 if your codebase is on React 15 or lower. If
   you are upgrading your codebase to React 16, however, _it is not recommended
-  to remain on react-drill v3 or lower_. Upgrading to v4 should fix any test
+  to remain on react-drill <= 2.5.0_. Upgrading to 3.0.0 should fix any test
   failures you experience after your React 16 upgrade.
 
 ## 2.5.0
