@@ -9,4 +9,4 @@ script:
   - npm run test
 node_js:
   - "stable"
-  - "4"
+  - "6"
