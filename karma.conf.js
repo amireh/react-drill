@@ -68,9 +68,11 @@ module.exports = function(config) {
       }
     },
 
-    webpack: Object.assign({}, require('./webpack.config.js'), {
+    webpack: {
       devtool: 'eval',
       entry: undefined,
+      context: path.resolve(__dirname, 'lib'),
+
       resolve: {
         alias: {
           'react-drill': path.resolve(__dirname, 'lib/index.js'),
@@ -118,7 +120,7 @@ module.exports = function(config) {
           }
         ]
       }
-    }),
+    },
     webpackMiddleware: {
       noInfo: true
     }
