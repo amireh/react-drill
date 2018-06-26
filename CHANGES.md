@@ -1,36 +1,10 @@
 # Release notes
 
-## 4.0.0
-
-**Improvements**
-
-- Now supports React 16!
-
-**Breaking changes**
-
-- Anonymous `React.Component` classes now have the default name of `Component` instead of
-  `ReactComponent`. If you have tests that rely on this default, make sure you update those as they
-  could be broken.
-
-**Other notes**
-
-- `React.createClass()` is still supported by Drill, but note that if you are upgrading
-  your own codebase to React 16 it will not be supported there. It is recommended to migrate
-  your components to ES6 classes, but you can also use the `create-react-class`
-  package as a drop-in replacement.
-  - If you do use `create-react-class`, make sure you label the import as `createReactClass`,
-    otherwise Drill will have issues tracing your components displayName's,
-    which could potentially cause false negatives in your tests.
-  - https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactcreateclass
-- You can still use react-drill v4 if your codebase is on React 15 or lower.
-  If you are upgrading your codebase to React 16, however, _it is not recommended to remain on
-  react-drill v3 or lower_. Upgrading to v4 should fix any test failures you experience after your
-  React 16 upgrade.
-
 ## 3.0.0
 
 **Improvements**
 
+- Now supports React 16!
 - The drilling scope can now select multiple components in addition to multiple
   DOM nodes.
 - Added an official API to support [[warping | Scope#warp]]
@@ -54,6 +28,10 @@
   sorry!
 
 **Breaking changes**
+
+- Anonymous `React.Component` classes now have the default name of `Component`
+  instead of `ReactComponent`. If you have tests that rely on this default,
+  make sure you update those as they could be broken.
 
 The following functions were **dropped** from the [[Scope]] object because they
 were confusing and didn't add any value by themselves:
@@ -127,6 +105,22 @@ notice and will be removed in a future release:
 
 Please consult the [[upgrade guide | ./UPGRADE.md#version-2-to-3]] for
 guidance.
+
+**Other notes**
+
+- `React.createClass()` is still supported by Drill, but note that if you are
+  upgrading your own codebase to React 16 it will not be supported there. It is
+  recommended to migrate your components to ES6 classes, but you can also use
+  the `create-react-class` package as a drop-in replacement.
+  - If you do use `create-react-class`, make sure you label the import as
+    `createReactClass`, otherwise Drill will have issues tracing your
+    components displayName's, which could potentially cause false negatives in
+    your tests.
+  - https://reactjs.org/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactcreateclass
+- You can still use react-drill v4 if your codebase is on React 15 or lower. If
+  you are upgrading your codebase to React 16, however, _it is not recommended
+  to remain on react-drill v3 or lower_. Upgrading to v4 should fix any test
+  failures you experience after your React 16 upgrade.
 
 ## 2.5.0
 

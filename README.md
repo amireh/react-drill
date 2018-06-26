@@ -152,7 +152,7 @@ const { drill } = require('react-drill')
 Maybe. See [[./examples/using-without-react.md]] or
 [[./addons/react-blessed/README.md]].
 
-### My tests are failing when drilling into an  "\<\<unknown\>\>" component
+### My tests are failing when drilling into an  `unknown` component
 
 Drill will output the tag `<<unknown>>` if it can't find the displayName for a
 component. If you are using ES6 classes for your React components, make sure
