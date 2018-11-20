@@ -1,5 +1,10 @@
 # Release notes
 
+## 3.0.1
+
+- Fixed an issue that was causing selectors to die when one of the provided
+  DOM nodes is null-ish
+
 ## 3.0.0
 
 **Improvements**
