@@ -58,16 +58,16 @@
     "object-assign": "4.1.0",
     "pikaday": "1.7.0",
     "prop-types": "15.6.1",
-    "react": "16.4.0",
+    "react": "16.7.0",
     "react-blessed": "0.x",
-    "react-dom": "16.4.0",
+    "react-dom": "16.7.0",
     "sinon": "4.4.2",
     "webpack": "3.11.0"
   },
   "optionalDependencies": {},
   "peerDependencies": {
-    "react": ">=0.14.1 <=16.4",
-    "react-dom": ">=0.14.1 <=16.4"
+    "react": ">=0.14.1 <=16.7.0",
+    "react-dom": ">=0.14.1 <=16.7.0"
   },
   "dependencies": {
     "assertion-error": "^1.0.1",
