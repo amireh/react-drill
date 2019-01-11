@@ -1,5 +1,11 @@
 # Release notes
 
+## 3.1.0
+
+- Ensured compatibility with React 16.7.0 - no changes were made, but 
+  installing the package through NPM should no longer warn about invalid
+  peer dependency versions.
+
 ## 3.0.1
 
 - Fixed an issue that was causing selectors to die when one of the provided
