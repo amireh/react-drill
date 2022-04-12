@@ -1,8 +1,14 @@
 # Release notes
 
+## 4.0.0
+
+- Now supports React upto version 16.14.0
+- Anonymous React.Component class components are now reported as "<<unknown>>"
+  instead of "Component"
+
 ## 3.1.0
 
-- Ensured compatibility with React 16.7.0 - no changes were made, but 
+- Ensured compatibility with React 16.7.0 - no changes were made, but
   installing the package through NPM should no longer warn about invalid
   peer dependency versions.
 
